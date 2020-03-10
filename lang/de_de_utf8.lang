@@ -1,0 +1,18 @@
+# addon:seminarkalender de_de_utf8
+
+seminarkalender_personen_edit = Person bearbeiten
+seminarkalender_personen_add = Person hinzufügen
+
+seminarkalender_personenDesc_edit = Beschreibung bearbeiten
+seminarkalender_personenDesc_add = Beschreibung hinzufügen
+
+seminarkalender_partner_edit = Partner bearbeiten
+seminarkalender_partner_add = Partner hinzufügen
+
+seminarkalender_seminartyp_edit = Seminartyp bearbeiten
+seminarkalender_seminartyp_add = Seminartyp hinzufügen
+
+seminarkalender_seminar_edit = Seminar bearbeiten
+seminarkalender_seminar_add = Seminar hinzufügen
+
+seminarkalender_save = Speichern

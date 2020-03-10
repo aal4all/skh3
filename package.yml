@@ -1,0 +1,40 @@
+package: skh3
+version: '0.2.0'
+name: skh3
+author: Falko Benthin
+supportpage: https://github.com/aal4all/seminarkalendar
+
+page:
+  title: 'Seminare'
+  perm: skh3[]
+  icon: rex-icon fa-calendar
+  subpages:
+    seminare_alt: 
+      title: 'Alte Seminare'
+      perm: skh3[]
+      icon: rex-icon fa-calendar-plus-o
+      itemclass: item_entries  }
+    personen: 
+      title: 'Personen'
+      perm: skh3[]
+      icon: rex-icon fa-calendar-plus-o
+      itemclass: item_entries  }
+    partner: 
+      title: 'Partner'
+      perm: skh3[]
+      icon: rex-icon fa-calendar-plus-o
+      itemclass: item_entries  }
+    geldgeber: 
+      title: 'Geldgeber'
+      perm: skh3[]
+      icon: rex-icon fa-calendar-plus-o
+      itemclass: item_entries  }
+    seminartyp: 
+      title: 'Seminartypen'
+      perm: skh3[]
+      icon: rex-icon fa-calendar
+      itemclass: item_calendar
+requires:
+    redaxo: '^5.8' 
+    php:
+        version: '^7.1'
