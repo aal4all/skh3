@@ -29,8 +29,8 @@
 		->ensureColumn(new rex_sql_column('seminar_id', 'mediumint(8) unsigned', $nullable = false))
 		->ensureColumn(new rex_sql_column('geldgeber_id', 'mediumint(8) unsigned', $nullable = false))
 		->setPrimaryKey(['seminar_id', 'geldgeber_id'])
-		->ensureForeignKey(new rex_sql_foreign_key('fk_foerd_geldgeber', 'skh3_geldgeber', ['geldgeber_id' => 'geldgeber_id'], $onUpdate = rex_sql_foreign_key::CASCADE))
-		->ensureForeignKey(new rex_sql_foreign_key('fk_foerd_seminare', 'skh3_seminare', ['seminar_id' => 'seminar_id'], $onUpdate = rex_sql_foreign_key::CASCADE), $onDelete = rex_sql_foreign_key::CASCADE )
+		->ensureForeignKey(new rex_sql_foreign_key('fk_foerd_geldgeber', rex::getTable('skh3_geldgeber'), ['geldgeber_id' => 'geldgeber_id'], $onUpdate = rex_sql_foreign_key::CASCADE))
+		->ensureForeignKey(new rex_sql_foreign_key('fk_foerd_seminare', rex::getTable('skh3_seminare'), ['seminar_id' => 'seminar_id'], $onUpdate = rex_sql_foreign_key::CASCADE), $onDelete = rex_sql_foreign_key::CASCADE )
 		->ensure();
 		
   // create skh3_err_msg if not exists
