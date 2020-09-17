@@ -14,21 +14,6 @@
 		->setPrimaryKey('seminar_id')
 		->ensure();
 		
-	// create skh3_seminare_lok if not exists
-	rex_sql_table::get(rex::getTable('skh3_seminare_lok'))
-		->ensureColumn(new rex_sql_column('seminar_id', 'mediumint(8) unsigned', $nullable = false))
-		->ensureColumn(new rex_sql_column('lang_id', 'int(11)', $nullable = false))
-		->ensureColumn(new rex_sql_column('titel', 'varchar(255)', $nullable = false))
-		->ensureColumn(new rex_sql_column('untertitel', 'varchar(255)', $nullable = false))
-		->ensureColumn(new rex_sql_column('beschreibung', 'text', $nullable = false))
-		->ensureColumn(new rex_sql_column('kosten', 'int(10)', $nullable = false, $default = 0))
-		->ensureColumn(new rex_sql_column('waehrung_id', 'tinyint(3)', $nullable = false))
-		->ensureColumn(new rex_sql_column('zielgruppe', 'varchar(255)', $nullable = false, $default = ''))
-		->setPrimaryKey(['seminar_id', 'lang_id'])
-		->ensureForeignKey(new rex_sql_foreign_key('fk_seminarelok_seminare', rex::getTable('skh3_seminare'), ['seminar_id' => 'seminar_id'], $onUpdate = rex_sql_foreign_key::CASCADE, $onDelete = rex_sql_foreign_key::CASCADE ))
-		->ensureForeignKey(new rex_sql_foreign_key('fk_seminarlok_waehrung', rex::getTable('skh3_waehrung'), ['waehrung_id' => 'waehrung_id'], $onUpdate = rex_sql_foreign_key::CASCADE), $onDelete = rex_sql_foreign_key::CASCADE )
-		->ensure();
-		
 	// create skh3_seminartyp_lok if not exists
 	rex_sql_table::get(rex::getTable('skh3_seminartyp_lok'))
 		->ensureColumn(new rex_sql_column('typ_id', 'tinyint(3) unsigned', $nullable = false, $default = null))
@@ -117,6 +102,20 @@
 		->ensureIndex(new rex_sql_index('kurzform', ['kurzform'], $type = rex_sql_index::UNIQUE))
 		->ensure();
 	
+	// create skh3_seminare_lok if not exists
+	rex_sql_table::get(rex::getTable('skh3_seminare_lok'))
+		->ensureColumn(new rex_sql_column('seminar_id', 'mediumint(8) unsigned', $nullable = false))
+		->ensureColumn(new rex_sql_column('lang_id', 'int(11)', $nullable = false))
+		->ensureColumn(new rex_sql_column('titel', 'varchar(255)', $nullable = false))
+		->ensureColumn(new rex_sql_column('untertitel', 'varchar(255)', $nullable = false))
+		->ensureColumn(new rex_sql_column('beschreibung', 'text', $nullable = false))
+		->ensureColumn(new rex_sql_column('kosten', 'int(10)', $nullable = false, $default = 0))
+		->ensureColumn(new rex_sql_column('waehrung_id', 'tinyint(3)', $nullable = false))
+		->ensureColumn(new rex_sql_column('zielgruppe', 'varchar(255)', $nullable = false, $default = ''))
+		->setPrimaryKey(['seminar_id', 'lang_id'])
+		->ensureForeignKey(new rex_sql_foreign_key('fk_seminarelok_seminare', rex::getTable('skh3_seminare'), ['seminar_id' => 'seminar_id'], $onUpdate = rex_sql_foreign_key::CASCADE, $onDelete = rex_sql_foreign_key::CASCADE ))
+		->ensureForeignKey(new rex_sql_foreign_key('fk_seminarlok_waehrung', rex::getTable('skh3_waehrung'), ['waehrung_id' => 'waehrung_id'], $onUpdate = rex_sql_foreign_key::CASCADE), $onDelete = rex_sql_foreign_key::CASCADE )
+		->ensure();
 	
 	// create skh3_foerdern if not exists
 	rex_sql_table::get(rex::getTable('skh3_foerdern'))
