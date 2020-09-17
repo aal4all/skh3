@@ -5,7 +5,7 @@
 	
 	// create skh3_seminare if not exists
 	rex_sql_table::get(rex::getTable('skh3_seminare'))
-		->ensureColumn(new rex_sql_column('seminar_id', 'mediumint(8) unsigned', $nullable = false, $extra = 'AUTO_INCREMENT'))
+		->ensureColumn(new rex_sql_column('seminar_id', 'mediumint(8) unsigned', $nullable = false, $default = null, $extra = 'AUTO_INCREMENT'))
 		->ensureColumn(new rex_sql_column('seminar_start', 'date', $nullable = false))
 		->ensureColumn(new rex_sql_column('seminar_ende', 'date', $nullable = false))
 		->ensureColumn(new rex_sql_column('seminar_ort', 'varchar(100)', $nullable = false))
@@ -16,7 +16,7 @@
 		
 	// create skh3_geldgeber if not exists
 	rex_sql_table::get(rex::getTable('skh3_geldgeber'))
-		->ensureColumn(new rex_sql_column('geldgeber_id', 'mediumint(8) unsigned', $nullable = false, $extra = 'AUTO_INCREMENT'))
+		->ensureColumn(new rex_sql_column('geldgeber_id', 'mediumint(8) unsigned', $nullable = false, $default = null, $extra = 'AUTO_INCREMENT'))
 		->ensureColumn(new rex_sql_column('name', 'varchar(255)', $nullable = false))
 		->ensureColumn(new rex_sql_column('website', 'varchar(255)', $nullable = false))
 		->setPrimaryKey('geldgeber_id')
