@@ -20,7 +20,7 @@
 		->ensureColumn(new rex_sql_column('name', 'varchar(255)', $nullable = false))
 		->ensureColumn(new rex_sql_column('website', 'varchar(255)', $nullable = false))
 		->setPrimaryKey('geldgeber_id')
-		->ensureIndex(new rex_sql_index('webseite', ['webseite'], $type = self::UNIQUE))
+		->ensureIndex(new rex_sql_index('webseite', ['webseite'], $type = rex_sql_index::UNIQUE))
 		->ensure();
 	
 	
