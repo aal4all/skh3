@@ -30,8 +30,17 @@
 //  );
 
 //  rex_title("Seminare", $subpages);
-
-
+  echo rex_view::title(Seminare);
+  // Die Subpages werden nicht mehr über den "subpage"-Parameter gesteuert, sondern über "page" (getrennt mit einem Slash, z. B. page=demo_addon/config)
+  // Die einzelnen Teile des page-Pfades können mit der folgenden Funktion ausgelesen werden.
+  $subpage = rex_be_controller::getCurrentPagePart(2);
+  // Subpages können über diese Methode eingebunden werden. So ist sichergestellt, dass auch Subpages funktionieren,
+  // die von anderen AddOns/Plugins hinzugefügt wurden
+  rex_be_controller::includeCurrentPageSubPath();
+  
+  
+  
+  
 //        switch($subpage) {
 //        case "seminare_alt":
 //                require $Basedir ."/seminare_alt.inc.php";
