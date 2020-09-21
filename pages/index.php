@@ -50,7 +50,7 @@
 //    break;
 //  default:
 //    require $Basedir ."/seminare.inc.php";
-  }
+//  }
   //footer inkludieren
 //  include_once $REX["INCLUDE_PATH"]."/layout/bottom.php";
 ?>
