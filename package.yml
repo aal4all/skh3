@@ -13,27 +13,22 @@ page:
       title: 'Alte Seminare'
       perm: skh3[]
       icon: rex-icon fa-calendar-plus-o
-      itemclass: item_entries  }
     personen: 
       title: 'Personen'
       perm: skh3[]
       icon: rex-icon fa-calendar-plus-o
-      itemclass: item_entries  }
     partner: 
       title: 'Partner'
       perm: skh3[]
       icon: rex-icon fa-calendar-plus-o
-      itemclass: item_entries  }
     geldgeber: 
       title: 'Geldgeber'
       perm: skh3[]
       icon: rex-icon fa-calendar-plus-o
-      itemclass: item_entries  }
     seminartyp: 
       title: 'Seminartypen'
       perm: skh3[]
       icon: rex-icon fa-calendar
-      itemclass: item_calendar
 requires:
     redaxo: '^5.8' 
     php:
