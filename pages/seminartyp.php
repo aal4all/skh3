@@ -1,5 +1,7 @@
 <?php
-        error_reporting('E_ALL');
+	error_reporting('E_ALL');
+	echo("seminartypen") ;
+	/*
         //Sprachen
         //$sprachen_add = '&amp;subpage='. $subpage. '&amp;func='.$func;
   //require $REX['INCLUDE_PATH'].'/functions/function_rex_languages.inc.php';
@@ -92,6 +94,7 @@
         {
                 $seminartyp = new seminartyp($typ_id);
                 $seminartyp->seminartypDelete();
-        }       
+        }
+  */
 ?>
 

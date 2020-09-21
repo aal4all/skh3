@@ -10,6 +10,10 @@ page:
   icon: rex-icon fa-calendar
   subpages:
     seminare_alt: 
+      title: 'Seminare'
+      perm: skh3[]
+      icon: rex-icon fa-calendar-plus-o
+    seminare_alt: 
       title: 'Alte Seminare'
       perm: skh3[]
       icon: rex-icon fa-calendar-plus-o

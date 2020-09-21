@@ -1,5 +1,7 @@
 <?php
-        error_reporting('E_ALL');
+	error_reporting('E_ALL');
+	echo("Hier kommt das PErsonengeraffel") ;
+	/*
         //Sprachen
         //$sprachen_add = '&amp;subpage='. $subpage. '&amp;func='.$func;
   //require $REX['INCLUDE_PATH'].'/functions/function_rex_languages.inc.php';
@@ -182,5 +184,5 @@
                 $person = new personen($person_id, $clang);
                 $person->beschreibungDelete();
         }
-        
+  */
 ?>

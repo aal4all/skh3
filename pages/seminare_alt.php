@@ -1,5 +1,6 @@
 <?php
   error_reporting('E_ALL');
+  echo("hier kommt das alte Seminargeraffel") ;
   /*
   //sprach-Umschalter
   require $REX['INCLUDE_PATH'].'/functions/function_rex_languages.inc.php';

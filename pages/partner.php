@@ -1,5 +1,7 @@
 <?php
-        error_reporting('E_ALL');
+	error_reporting('E_ALL');
+	echo"Hier kommt das Partnergeraffel");
+	/*
   //Partner-Klasse
   require_once ($REX['INCLUDE_PATH']. '/addons/'. rex_request('page', 'string','') .'/classes/class.partner.inc.php');
         $partner_id = rex_request('partner_id', 'int');
@@ -81,4 +83,5 @@
                 $partner = new partner($partner_id);
                 $partner->partnerDelete();
         }
+  */
 ?>

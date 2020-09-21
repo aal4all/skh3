@@ -1,5 +1,6 @@
 <?php
-        error_reporting('E_ALL');
+	error_reporting('E_ALL');
+	echo("hier kommt das geldgebergeraffel") ;
   //geldgeber-Klasse
   require_once ($REX['INCLUDE_PATH']. '/addons/'. rex_request('page', 'string','') .'/classes/class.geldgeber.inc.php');
         $geldgeber_id = rex_request('geldgeber_id', 'int');
@@ -81,4 +82,5 @@
                 $geldgeber = new geldgeber($geldgeber_id);
                 $geldgeber->geldgeberDelete();
         }
+	*/
 ?>

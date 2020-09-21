@@ -1,5 +1,9 @@
 <?php
   error_reporting('E_ALL');
+  
+  echo("hier kommt das Seminargeraffel") ;
+  
+  /*
   //sprach-Umschalter
   require $REX['INCLUDE_PATH'].'/functions/function_rex_languages.inc.php';
   //Seminar-Klasse
@@ -338,4 +342,5 @@
                         echo('<font color="red">ein Fehler ist aufgetreten</font>');
         
         }
+  */
 ?>
