@@ -9,7 +9,7 @@ page:
   perm: skh3[]
   icon: rex-icon fa-calendar
   subpages:
-    seminare_alt: 
+    seminare: 
       title: 'Seminare'
       perm: skh3[]
       icon: rex-icon fa-calendar-plus-o
