@@ -4,7 +4,7 @@
  * 
  * @author Falko Benthin
  * @link http://www.hochdrei.org
- * @package Redaxo 4.3
+ * @package Redaxo 5.11
  * 
  */
 

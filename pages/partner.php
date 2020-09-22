@@ -1,6 +1,6 @@
 <?php
 	error_reporting('E_ALL');
-	echo"Hier kommt das Partnergeraffel");
+	echo("Hier kommt das Partnergeraffel");
 	/*
   //Partner-Klasse
   require_once ($REX['INCLUDE_PATH']. '/addons/'. rex_request('page', 'string','') .'/classes/class.partner.inc.php');
