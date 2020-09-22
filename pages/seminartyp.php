@@ -1,7 +1,7 @@
 <?php
 	error_reporting('E_ALL');
 	echo("seminartypen") ;
-	seminartyp = new skh3\seminartyp(0) ;
+	$seminartyp = new skh3\seminartyp(0) ;
 	/*
         //Sprachen
         //$sprachen_add = '&amp;subpage='. $subpage. '&amp;func='.$func;
