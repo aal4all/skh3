@@ -36,7 +36,6 @@ class seminartyp
 
 	function __construct($typ_id = null)
   {
-		global $REX;
 		if(!is_null($typ_id))
 		{
 			$this->typ_id = $typ_id ;
@@ -100,7 +99,6 @@ class seminartyp
 	//Durch Arrays bezeichnung und lang_id latschen und wo Bezeichnung enthalten ist, speichern
 	public function seminartypSave()
 	{
-		global $REX ;
 		//DB-Objekt
 		$sql = \rex_sql::factory() ;
 		$sql->setDebug = true ;
@@ -169,7 +167,6 @@ class seminartyp
 	//seminartyp löschen
 	public function seminartypDelete()
 	{
-		global $REX ;
 		$sql = \rex_sql::factory() ;
 		$sql->setDebug = true ;
 		$queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
