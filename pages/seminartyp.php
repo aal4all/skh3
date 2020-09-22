@@ -13,7 +13,7 @@
 	//Seminartypen auflisten
 	if ($func == '') 
 	{
-		$query='SELECT typ_id, lang_id, bezeichnung FROM ' . \rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id,clang' ;
+		$query='SELECT typ_id, lang_id, bezeichnung FROM ' . \rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id, lang_id ;' ;
 		$list = rex_list::factory($query) ;
 		$thIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>' ;
 		//bis redaxo 4.4: $tdIcon = '<a href="'. $list->getUrl(array('func' => 'edit','typ_id' => '###typ_id###')).'"><img src="media/document.gif" alt="edit" title="edit" /></a>';
