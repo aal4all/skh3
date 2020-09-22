@@ -18,7 +18,7 @@ class seminartyp
 	private $typ_id ;
 	
 	/**
-   * @private int $clang Sprach-ID
+   * @private int $lang_id Sprach-ID
    */
 	private $lang_id = array() ;
 	
@@ -60,7 +60,7 @@ class seminartyp
 			$sql->setQuery($queryClang) ;
 			for($i = 0; $i < $sql->getRows(); $i++)
 			{
-				$this->clang[$i] = $sql->getValue('id') ;
+				$this->lang_id[$i] = $sql->getValue('id') ;
 				$this->bezeichnung[$i] = '' ;
 				$sql->next() ;
 			}
@@ -74,7 +74,7 @@ class seminartyp
 	}
 	public function getClang($i)
 	{
-		return $this->clang[$i] ;
+		return $this->lang_id[$i] ;
 	}
 	public function getBezeichnung($i)
 	{
@@ -89,7 +89,7 @@ class seminartyp
 	//lokalisierte Beschreibungen
 	public function setClang($i, $lang_id)
 	{
-		$this->clang[$i] = $lang_id ;
+		$this->lang_id[$i] = $lang_id ;
 	}
 	public function setBezeichnung($i, $bezeichnung)
 	{
@@ -97,7 +97,7 @@ class seminartyp
 	}
 
 	//Speichern
-	//Durch Arrays bezeichnung und clang latschen und wo Bezeichnung enthalten ist, speichern
+	//Durch Arrays bezeichnung und lang_id latschen und wo Bezeichnung enthalten ist, speichern
 	public function seminartypSave()
 	{
 		global $REX ;
