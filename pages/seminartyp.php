@@ -1,15 +1,14 @@
 <?php
 	error_reporting('E_ALL');
 	echo("seminartypen") ;
-	$seminartyp = new skh3\seminartyp(0) ;
-	/*
-        //Sprachen
-        //$sprachen_add = '&amp;subpage='. $subpage. '&amp;func='.$func;
+	
+	//Sprachen
+	//$sprachen_add = '&amp;subpage='. $subpage. '&amp;func='.$func;
   //require $REX['INCLUDE_PATH'].'/functions/function_rex_languages.inc.php';
   //Seminartypen-Klasse
-  require_once ($REX['INCLUDE_PATH']. '/addons/'. rex_request('page', 'string','') .'/classes/class.seminartyp.inc.php');
+  //require_once ($REX['INCLUDE_PATH']. '/addons/'. rex_request('page', 'string','') .'/classes/class.seminartyp.inc.php');
   $typ_id = rex_request('typ_id', 'int');
-  $clang = rex_request('clang', 'int');
+  $clang = rex_request('lang_id', 'int');
     
         //Seminartypen auflisten
   if ($func == '') 
@@ -96,6 +95,5 @@
                 $seminartyp = new seminartyp($typ_id);
                 $seminartyp->seminartypDelete();
         }
-  */
 ?>
 
