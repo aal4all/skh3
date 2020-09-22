@@ -8,7 +8,7 @@
   //Seminartypen-Klasse
   //require_once ($REX['INCLUDE_PATH']. '/addons/'. rex_request('page', 'string','') .'/classes/class.seminartyp.inc.php');
   $typ_id = rex_request('typ_id', 'int');
-  $clang = rex_request('lang_id', 'int');
+  $lang_id = rex_request('lang_id', 'int');
     
 	//Seminartypen auflisten
 	if ($func == '') 
