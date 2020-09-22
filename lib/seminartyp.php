@@ -40,7 +40,7 @@ class seminartyp
 		if(!is_null($typ_id))
 		{
 			$this->typ_id = $typ_id ;
-			$sql = rex_sql::factory() ;
+			$sql = \rex_sql::factory() ;
 			$sql->setDebug = true ;
 			$querySeminartyp = 'SELECT lang_id, bezeichnung FROM ' . rex::getTablePrefix()  . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
 			$sql->setQuery($querySeminartyp) ;
