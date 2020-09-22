@@ -10,34 +10,28 @@
   $typ_id = rex_request('typ_id', 'int');
   $clang = rex_request('lang_id', 'int');
     
-        //Seminartypen auflisten
-  if ($func == '') 
-  {
-                
-          $query='SELECT typ_id, clang, bezeichnung
-                FROM '.$REX['TABLE_PREFIX'].'skh3_seminartyp_lok ORDER BY typ_id,clang';
-    
-                $list = rex_list::factory($query);
-    
-                $thIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>';
-                //bis redaxo 4.4: $tdIcon = '<a href="'. $list->getUrl(array('func' => 'edit','typ_id' => '###typ_id###')).'"><img src="media/document.gif" alt="edit" title="edit" /></a>';
+	//Seminartypen auflisten
+	if ($func == '') 
+	{
+		$query='SELECT typ_id, lang_id, bezeichnung FROM ' . \rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id,clang' ;
+		$list = rex_list::factory($query) ;
+		$thIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>' ;
+		//bis redaxo 4.4: $tdIcon = '<a href="'. $list->getUrl(array('func' => 'edit','typ_id' => '###typ_id###')).'"><img src="media/document.gif" alt="edit" title="edit" /></a>';
     //bis redaxo 4.4: $tdDelete = '<a href="'. $list->getUrl(array('func' => 'del','typ_id' => '###typ_id###')).'">löschen</a>';
-    $tdIcon = '<img src="media/document.gif" alt="edit" title="edit" />';
-    $tdDelete = 'löschen';
+		$tdIcon = '<img src="media/document.gif" alt="edit" title="edit" />';
+		$tdDelete = 'löschen';
     //Spalte zum hinzufügen und editieren
-                $list->addColumn($thIcon, $tdIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' )); 
-                $list->setColumnParams($thIcon, array('func' => 'edit','typ_id' => '###typ_id###'));
-                //spalte zum löschen
-                $list->addColumn('Löschen', $tdDelete, 5, array( '<th>###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' ));
-                $list->setColumnParams('Löschen', array('func' => 'del','typ_id' => '###typ_id###'));
-
-                $list->addTableColumnGroup(array(5, 5, 5, '*', 5));
-                $list->setColumnLabel('typ_id', 'Seminartyp'); 
-                $list->setColumnLabel('clang', 'Sprache');
-    $list->setColumnLabel('bezeichnung', 'Bezeichnung');
-
-                $list->show();
-  }
+		$list->addColumn($thIcon, $tdIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' )); 
+		$list->setColumnParams($thIcon, array('func' => 'edit','typ_id' => '###typ_id###'));
+		//spalte zum löschen
+		$list->addColumn('Löschen', $tdDelete, 5, array( '<th>###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' ));
+		$list->setColumnParams('Löschen', array('func' => 'del','typ_id' => '###typ_id###'));
+		$list->addTableColumnGroup(array(5, 5, 5, '*', 5));
+		$list->setColumnLabel('typ_id', 'Seminartyp'); 
+		$list->setColumnLabel('lang_id', 'Sprache');
+		$list->setColumnLabel('bezeichnung', 'Bezeichnung');
+		$list->show();
+	}
   //Typ ändern oder hinzufügen
   if ($func == 'add' || $func == 'edit') 
   {             
