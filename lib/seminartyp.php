@@ -42,7 +42,7 @@ class seminartyp
 			$this->typ_id = $typ_id ;
 			$sql = \rex_sql::factory() ;
 			$sql->setDebug = true ;
-			$querySeminartyp = 'SELECT lang_id, bezeichnung FROM ' . rex::getTablePrefix()  . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
+			$querySeminartyp = 'SELECT lang_id, bezeichnung FROM ' . \rex::getTablePrefix()  . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
 			$sql->setQuery($querySeminartyp) ;
 			for($i=0; $i<$sql->getRows(); $i++)
 			{
@@ -55,8 +55,8 @@ class seminartyp
 		{
 			$this->typ_id = null ;
 			//Sprachen aus DB holen
-			$sql = rex_sql::factory() ;
-			$queryClang = 'SELECT id FROM ' . rex::getTablePrefix()  . 'clang;' ;
+			$sql = \rex_sql::factory() ;
+			$queryClang = 'SELECT id FROM ' . \rex::getTablePrefix()  . 'clang;' ;
 			$sql->setQuery($queryClang) ;
 			for($i = 0; $i < $sql->getRows(); $i++)
 			{
@@ -102,13 +102,13 @@ class seminartyp
 	{
 		global $REX ;
 		//DB-Objekt
-		$sql = rex_sql::factory() ;
+		$sql = \rex_sql::factory() ;
 		$sql->setDebug = true ;
 		if(empty($this->typ_id))
 		{
 			echo('Neuer Eintrag') ;
 			//höchste Typ-ID aus DB holen 
-			$queryMaxID = 'SELECT MAX(typ_id) AS max_id FROM ' . rex::getTablePrefix()  . 'skh3_seminartyp_lok ;' ;
+			$queryMaxID = 'SELECT MAX(typ_id) AS max_id FROM ' . \rex::getTablePrefix()  . 'skh3_seminartyp_lok ;' ;
 			if($sql->setQuery($queryMaxID))
 			{
 				$sql->getRow() ;
@@ -128,7 +128,7 @@ class seminartyp
 				{
 					//Escapezeichen und whitespaces behandeln
 					$this->bezeichnung[$i] = htmlspecialchars(trim($this->bezeichnung[$i]),ENT_QUOTES,'UTF-8') ;
-					$querySemTyp = 'INSERT INTO ' . rex::getTablePrefix() . 'skh3_seminartyp_lok (typ_id, lang_id, bezeichnung) VALUES (' . $this->typ_id . ',' . $this->lang_id[$i] . ',\'' . $this->bezeichnung[$i] . '\');' ;
+					$querySemTyp = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok (typ_id, lang_id, bezeichnung) VALUES (' . $this->typ_id . ',' . $this->lang_id[$i] . ',\'' . $this->bezeichnung[$i] . '\');' ;
 					//in DB speichern
 					if($sql->setQuery($querySemTyp))
 						echo('Seminartyp für Sprache ' . $this->lang_id[$i] . ' erfolgreich gespeichert') ;
@@ -150,7 +150,7 @@ class seminartyp
 				{
 					//Escapezeichen und whitespaces behandeln
 					$this->bezeichnung[$i] = htmlspecialchars(trim($this->bezeichnung[$i]),ENT_QUOTES,'UTF-8') ;
-					$querySemTyp = 'UPDATE ' . rex::getTablePrefix() . 'skh3_seminartyp_lok SET bezeichnung=\'' . $this->bezeichnung[$i].'\' WHERE typ_id=' . $this->typ_id.' AND lang_id=' . $this->lang_id[$i] . ';' ;
+					$querySemTyp = 'UPDATE ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok SET bezeichnung=\'' . $this->bezeichnung[$i].'\' WHERE typ_id=' . $this->typ_id.' AND lang_id=' . $this->lang_id[$i] . ';' ;
 					//in DB speichern
 					if($sql->setQuery($querySemTyp))
 						echo('Seminartyp für Sprache ' . $this->lang_id[$i] . ' erfolgreich gespeichert') ;
@@ -170,9 +170,9 @@ class seminartyp
 	public function seminartypDelete()
 	{
 		global $REX ;
-		$sql = rex_sql::factory() ;
+		$sql = \rex_sql::factory() ;
 		$sql->setDebug = true ;
-		$queryDelete = 'DELETE FROM ' . rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
+		$queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
 		if($sql->setQuery($queryDelete))
 				echo('Seminartyp gelöscht') ;
 		else
