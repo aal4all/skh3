@@ -5,15 +5,14 @@
 	//Sprachen
 	//$sprachen_add = '&amp;subpage='. $subpage. '&amp;func='.$func;
   //require $REX['INCLUDE_PATH'].'/functions/function_rex_languages.inc.php';
-  //Seminartypen-Klasse
-  //require_once ($REX['INCLUDE_PATH']. '/addons/'. rex_request('page', 'string','') .'/classes/class.seminartyp.inc.php');
   $typ_id = rex_request('typ_id', 'int');
   $lang_id = rex_request('lang_id', 'int');
+  $func = rex_request('func', 'string');
     
 	//Seminartypen auflisten
 	if ($func == '') 
 	{
-		$query='SELECT typ_id, lang_id, bezeichnung FROM ' . \rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id, lang_id ;' ;
+		$query = 'SELECT typ_id, lang_id, bezeichnung FROM ' . \rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id, lang_id ;' ;
 		$list = rex_list::factory($query) ;
 		$thIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>' ;
 		//bis redaxo 4.4: $tdIcon = '<a href="'. $list->getUrl(array('func' => 'edit','typ_id' => '###typ_id###')).'"><img src="media/document.gif" alt="edit" title="edit" /></a>';
