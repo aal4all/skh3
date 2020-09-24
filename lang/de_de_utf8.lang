@@ -9,10 +9,11 @@ seminarkalender_personenDesc_add = Beschreibung hinzufügen
 seminarkalender_partner_edit = Partner bearbeiten
 seminarkalender_partner_add = Partner hinzufügen
 
-seminarkalender_seminartyp_edit = Seminartyp bearbeiten
-seminarkalender_seminartyp_add = Seminartyp hinzufügen
-
 seminarkalender_seminar_edit = Seminar bearbeiten
 seminarkalender_seminar_add = Seminar hinzufügen
 
 seminarkalender_save = Speichern
+
+# seminartypen
+seminartyp_formcaption_add = Seminartyp hinzufügen
+seminartyp_formcaption_edit = Seminartyp bearbeiten

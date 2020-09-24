@@ -1,7 +1,6 @@
 <?php
-  //error_reporting('E_ALL');
-  //echo("seminartypen") ;
-  $typ_id = rex_request('typ_id', 'int');
+  error_reporting('E_ALL');
+  echo("seminartypen") ;
   $lang_id = rex_request('lang_id', 'int');
   $func = rex_request('func', 'string');
 
@@ -28,14 +27,37 @@
     $list->show();
 	}
   //Typ ändern oder hinzufügen
-  if ($func == 'add' || $func == 'edit') 
+  if ($func == 'add' || $func == 'edit')
+  $typ_id = rex_request('typ_id', 'int');
   {
-    if($func == 'add') //wenn kein Seminartyp ausgewählt wurde
+    if($func == 'add') 
+    { //wenn kein Seminartyp ausgewählt wurde
+      $formLabel = $this->i18n('seminartyp_formcaption_add');
       $seminartyp = new skh3\seminartyp(null) ;
+    }
     //ID für add und 
     if($func == 'edit')
+    {
+      $formLabel = $this->i18n('seminartyp_formcaption_edit');
       $seminartyp = new skh3\seminartyp($typ_id) ;
-		//Formular anzeigen
+    }
+    
+    //Formular anzeigen
+    $form = rex_form::factory(rex::getTable('skh3_seminartyp_lok'), '', 'typ_id='.$typ_id);
+    $form->setLanguageSupport('typ_id','lang_id');
+    //Start - add bezeichnung-field
+		$field = $form->addTextAreaField('description');
+		//$field->setLabel($this->i18n('snippets_label_description'));
+		$field->setLabel('bezeichnung');
+		//End - add bezeichnung-field
+
+		if ($func == 'edit') {
+			$form->addParam('typ_id', $typ_id);
+		}
+
+		$content = $form->get();
+		
+		
 ?>
 <div class="rex-addon-output">
 <?php $headline = $func == 'edit' ? 'seminartyp ändern' : 'Neuer Seminartyp'; ?>
