@@ -16,13 +16,13 @@
     $tdIcon = '<img src="media/document.gif" alt="edit" title="edit" />';
     $tdDelete = 'löschen';
     //Spalte zum hinzufügen und editieren
-//    $list->addColumn($thIcon, $tdIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' )); 
-//    $list->setColumnParams($thIcon, array('func' => 'edit','typ_id' => '###typ_id###'));
+    $list->addColumn($thIcon, $tdIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' )); 
+    $list->setColumnParams($thIcon, array('func' => 'edit','typ_id' => '###typ_id###'));
     //spalte zum löschen
-//    $list->addColumn('Löschen', $tdDelete, 5, array( '<th>###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' ));
-//    $list->setColumnParams('Löschen', array('func' => 'del','typ_id' => '###typ_id###'));
-//    $list->addTableColumnGroup(array(5, 5, 5, '*', 5));
-//    $list->setColumnLabel('typ_id', 'Seminartyp'); 
+    $list->addColumn('Löschen', $tdDelete, 5, array( '<th>###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' ));
+    $list->setColumnParams('Löschen', array('func' => 'del','typ_id' => '###typ_id###'));
+    $list->addTableColumnGroup(array(5, 5, 5, '*', 5));
+    $list->setColumnLabel('typ_id', 'Seminartyp'); 
     $list->setColumnLabel('lang_id', 'Sprache');
     $list->setColumnLabel('bezeichnung', 'Bezeichnung');
     $list->show();
