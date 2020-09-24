@@ -1,6 +1,6 @@
 <?php
-  error_reporting('E_ALL');
-  echo("seminartypen") ;
+  //error_reporting('E_ALL');
+  //echo("seminartypen") ;
   $typ_id = rex_request('typ_id', 'int');
   $lang_id = rex_request('lang_id', 'int');
   $func = rex_request('func', 'string');
@@ -9,12 +9,12 @@
   if ($func == '') 
   {
     $query = 'SELECT typ_id, lang_id, bezeichnung FROM ' . rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id, lang_id ;' ;
-    echo $query ;
+    //echo $query ;
     $list = rex_list::factory($query) ;
-    $sql = rex_sql::factory();
-    $result = $sql->setQuery($query);
-    echo gettype($result) ;
-    echo $result->getRows() ;
+    //$sql = rex_sql::factory();
+    //$result = $sql->setQuery($query);
+    //echo gettype($result) ;
+    //echo $result->getRows() ;
 //		$thIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>' ;
 		//bis redaxo 4.4: $tdIcon = '<a href="'. $list->getUrl(array('func' => 'edit','typ_id' => '###typ_id###')).'"><img src="media/document.gif" alt="edit" title="edit" /></a>';
     //bis redaxo 4.4: $tdDelete = '<a href="'. $list->getUrl(array('func' => 'del','typ_id' => '###typ_id###')).'">löschen</a>';
