@@ -11,7 +11,9 @@
     $query = 'SELECT typ_id, lang_id, bezeichnung FROM ' . rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id, lang_id ' ;
     //echo $query ;
     $list = rex_list::factory($query) ;
-//		$thIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>' ;
+    $thIcon = '<a href="' . $list->getUrl(['func' => 'add']) . '" title="'.$this->i18n('column_hashtag') . ' ' . rex_i18n::msg('add') . '"><i class="rex-icon rex-icon-add-action"></i></a>';
+    $tdIcon = '<i class="rex-icon fa-file-text-o"></i>';
+
 		//bis redaxo 4.4: $tdIcon = '<a href="'. $list->getUrl(array('func' => 'edit','typ_id' => '###typ_id###')).'"><img src="media/document.gif" alt="edit" title="edit" /></a>';
     //bis redaxo 4.4: $tdDelete = '<a href="'. $list->getUrl(array('func' => 'del','typ_id' => '###typ_id###')).'">löschen</a>';
 //		$tdIcon = '<img src="media/document.gif" alt="edit" title="edit" />';
