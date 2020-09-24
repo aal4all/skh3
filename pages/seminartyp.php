@@ -8,7 +8,7 @@
   //Seminartypen auflisten
   if ($func == '') 
   {
-    $query = 'SELECT typ_id, lang_id, bezeichnung FROM ' . rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id, lang_id ;' ;
+    $query = 'SELECT typ_id, lang_id, bezeichnung FROM ' . rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id, lang_id ' ;
     //echo $query ;
     $list = rex_list::factory($query) ;
     //$sql = rex_sql::factory();
