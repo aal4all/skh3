@@ -11,10 +11,6 @@
     $query = 'SELECT typ_id, lang_id, bezeichnung FROM ' . rex::getTablePrefix() .'skh3_seminartyp_lok ORDER BY typ_id, lang_id ;' ;
     //echo $query ;
     $list = rex_list::factory($query) ;
-    //$sql = rex_sql::factory();
-    //$result = $sql->setQuery($query);
-    //echo gettype($result) ;
-    //echo $result->getRows() ;
 //		$thIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>' ;
 		//bis redaxo 4.4: $tdIcon = '<a href="'. $list->getUrl(array('func' => 'edit','typ_id' => '###typ_id###')).'"><img src="media/document.gif" alt="edit" title="edit" /></a>';
     //bis redaxo 4.4: $tdDelete = '<a href="'. $list->getUrl(array('func' => 'del','typ_id' => '###typ_id###')).'">löschen</a>';
@@ -30,7 +26,7 @@
 //		$list->setColumnLabel('typ_id', 'Seminartyp'); 
 //		$list->setColumnLabel('lang_id', 'Sprache');
 //		$list->setColumnLabel('bezeichnung', 'Bezeichnung');
-//		$list->show();
+    $list->show();
 	}
   //Typ ändern oder hinzufügen
 //  if ($func == 'add' || $func == 'edit') 
