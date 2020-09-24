@@ -28,7 +28,6 @@ class seminartyp
 	private $bezeichnung = array() ;
 	
 	/**
-	* PHP 5 Constructor
 	* @access  public
 	* 
 	* @param integer $typ_id
