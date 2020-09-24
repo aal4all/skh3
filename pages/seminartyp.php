@@ -62,7 +62,7 @@
 <?php
   //Sprachen aus DB holen
   $sql = rex_sql::factory();
-  $queryClang = 'SELECT id, name FROM ' . $REX['TABLE_PREFIX'] . 'clang;' ;
+  $queryClang = 'SELECT id, name FROM ' . rex::getTablePrefix() . 'clang;' ;
   $sql->setQuery($queryClang);
   for($i = 0; $i < $sql->getRows(); $i++)
   {
