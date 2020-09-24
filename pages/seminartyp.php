@@ -31,10 +31,10 @@
   if ($func == 'add' || $func == 'edit') 
   {
     if($func == 'add') //wenn kein Seminartyp ausgewählt wurde
-      $seminartyp = new seminartyp(null) ;
+      $seminartyp = new skh3\seminartyp(null) ;
     //ID für add und 
     if($func == 'edit')
-      $seminartyp = new seminartyp($typ_id) ;
+      $seminartyp = new skh3\seminartyp($typ_id) ;
 		//Formular anzeigen
 ?>
 <div class="rex-addon-output">
