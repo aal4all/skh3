@@ -117,7 +117,6 @@ class seminartyp
 				echo('Fehler beim ermitteln der typ_id<br />' . $sql->getError()) ;
 				return false ;
 			}
-			$sql->freeResult() ; //Speicher freigeben
 			for($i = 0; $i < count($this->lang_id); $i++)
 			{
 				echo "For-Schleife Durchlauf $i<br />" ;
