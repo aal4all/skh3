@@ -83,7 +83,7 @@ class seminartyp
 		  $this->typ_id = 1 ;
 		else
 		  $this->typ_id = $sql->getValue('max_id')+1 ;
-		echo true ;
+		return true ;
 	}
 
   //Getter
