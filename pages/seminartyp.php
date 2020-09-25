@@ -41,7 +41,7 @@
       $formLabel = $this->i18n('seminartyp_formcaption_edit');
       $seminartyp = new skh3\seminartyp($typ_id) ;
     }
-    
+    /*
     //Formular anzeigen
     $form = rex_form::factory(rex::getTable('skh3_seminartyp_lok'), '', 'typ_id='.rex_request('typ_id', 'int', 0));
     $form->setLanguageSupport('typ_id','lang_id');
@@ -63,7 +63,7 @@
 		$content = $fragment->parse('core/page/section.php');
 
 		echo $content;
-		
+		*/
 ?>
 <div class="rex-addon-output">
 <?php $headline = $func == 'edit' ? 'seminartyp ändern' : 'Neuer Seminartyp'; ?>
