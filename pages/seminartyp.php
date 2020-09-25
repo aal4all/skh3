@@ -28,8 +28,8 @@
 	}
   //Typ ändern oder hinzufügen
   if ($func == 'add' || $func == 'edit')
-  $typ_id = rex_request('typ_id', 'int');
   {
+		$typ_id = rex_request('typ_id', 'int');
     if($func == 'add') 
     { //wenn kein Seminartyp ausgewählt wurde
       $formLabel = $this->i18n('seminartyp_formcaption_add');
@@ -109,7 +109,7 @@
   //Seminartyp löschen
   if($func == 'del')
   {
-    $seminartyp = new seminartyp($typ_id);
+    $seminartyp = new skh3\seminartyp($typ_id);
     $seminartyp->seminartypDelete();
   }
 ?>
