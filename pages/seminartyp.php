@@ -109,6 +109,7 @@
   //Seminartyp löschen
   if($func == 'del')
   {
+		$typ_id = rex_request('typ_id', 'int');
     $seminartyp = new skh3\seminartyp($typ_id);
     $seminartyp->seminartypDelete();
   }

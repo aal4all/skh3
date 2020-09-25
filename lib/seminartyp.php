@@ -186,7 +186,7 @@ class seminartyp
 	{
 		$sql = \rex_sql::factory() ;
 		$sql->setDebug = \rex::getProperty('debug') ;
-		$queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
+		$queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id  ;
 		if($sql->setQuery($queryDelete))
 				echo('Seminartyp gelöscht') ;
 		else
