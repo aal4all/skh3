@@ -79,10 +79,10 @@ class seminartyp
 		$queryMaxID = 'SELECT MAX(typ_id) AS max_id FROM ' . \rex::getTablePrefix()  . 'skh3_seminartyp_lok' ;
 		$sql->setQuery($queryMaxID) ;
 		$sql->getRow() ;
-		if($sql->getValue('MAX(typ_id)') == null)
+		if($sql->getValue('max_id') == null)
 		  return(1) ;
 		else
-		  return(($sql->getValue('MAX(typ_id)')+1) ;
+		  return(($sql->getValue('max_id')+1) ;
 	}
 
   //Getter
