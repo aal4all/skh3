@@ -46,9 +46,9 @@
     $form = rex_form::factory(rex::getTable('skh3_seminartyp_lok'), '', 'typ_id='.rex_request('typ_id', 'int', 0));
     $form->setLanguageSupport('typ_id','lang_id');
     //Start - add bezeichnung-field
-		$field = $form->addTextAreaField('Bezeichnung');
+		$field = $form->addTextField('bezeichnung');
 		//$field->setLabel($this->i18n('snippets_label_description'));
-		$field->setLabel('bezeichnung');
+		$field->setLabel('Bezeichnung');
 		//End - add bezeichnung-field
 
 		if ($func == 'edit') {
