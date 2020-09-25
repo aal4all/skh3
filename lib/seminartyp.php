@@ -82,7 +82,7 @@ class seminartyp
 		if($sql->getValue('max_id') == null)
 		  return(1) ;
 		else
-		  return(($sql->getValue('max_id')+1) ;
+		  return($sql->getValue('max_id')+1) ;
 	}
 
   //Getter
