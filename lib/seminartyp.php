@@ -174,7 +174,6 @@ class seminartyp
 						echo('Fehler beim Speichern des Seminartyps<br />' . $sql->getError()) ;
 						return false;
 					}
-					$sql->freeResult() ;
 				}
 			}
 		}
