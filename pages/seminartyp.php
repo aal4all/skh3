@@ -17,7 +17,7 @@
     $list->setColumnParams($thIcon, array('func' => 'edit','typ_id' => '###typ_id###'));
     //spalte zum löschen
     $tdDelete = 'löschen';
-    $list->addColumn('Löschen', $tdDelete, 5, array( '<th>###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' ));
+    $list->addColumn('Löschen', $tdDelete, 5, array( '<th>###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' ));
     $list->setColumnParams('Löschen', array('func' => 'del','typ_id' => '###typ_id###'));
     $list->addTableColumnGroup(array(5, 5, 5, '*', 5));
     $list->setColumnLabel('typ_id', 'Seminartyp'); 
@@ -94,7 +94,7 @@
   for($i = 0; $i < $sql->getRows(); $i++)
   {
     echo '<h3>' . $sql->getValue('name') .'</h3>';
-    echo '<label for="bezeichnung">Bezeichnung</label><input class="txt" type="text" name="bezeichnung[]"// id="bezeichung" value="'.$seminartyp->getBezeichnung($i).'" /><br />';
+    echo '<label for="bezeichnung">Bezeichnung</label><input class="txt" type="text" name="bezeichnung[]" id="bezeichung" value="'.$seminartyp->getBezeichnung($i).'" /><br />';
     $sql->next();
    }
 ?>
