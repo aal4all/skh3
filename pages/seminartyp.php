@@ -11,13 +11,12 @@
     //echo $query ;
     $list = rex_list::factory($query) ;
     $thIcon = '<a href="' . $list->getUrl(['func' => 'add']) . '" title="'.$this->i18n('column_hashtag') . ' ' . rex_i18n::msg('add') . '"><i class="rex-icon rex-icon-add-action"></i></a>';
-    $tdIcon = '<i class="rex-icon fa-file-text-o"></i>';
-    $tdIcon = '<img src="media/document.gif" alt="edit" title="edit" />';
-    $tdDelete = 'löschen';
     //Spalte zum hinzufügen und editieren
-    $list->addColumn($thIcon, $tdIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' )); 
+    $tdIcon = '<i class="rex-icon fa-file-text-o"></i>';
+		$list->addColumn($thIcon, $tdIcon, 0, ['<th class="rex-table-icon">###VALUE###</th>', '<td class="rex-table-icon">###VALUE###</td>']);
     $list->setColumnParams($thIcon, array('func' => 'edit','typ_id' => '###typ_id###'));
     //spalte zum löschen
+    $tdDelete = 'löschen';
     $list->addColumn('Löschen', $tdDelete, 5, array( '<th>###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' ));
     $list->setColumnParams('Löschen', array('func' => 'del','typ_id' => '###typ_id###'));
     $list->addTableColumnGroup(array(5, 5, 5, '*', 5));
