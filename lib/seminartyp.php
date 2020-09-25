@@ -153,7 +153,7 @@ class seminartyp
 		}
 		else
 		{
-			echo('Eintrag ändern') ;
+			echo('Eintrag ändern'.count($this->lang_id)) ;
 			for($i = 0; $i < count($this->lang_id); $i++)
 			{
 				if(!empty($this->bezeichnung[$i]))
