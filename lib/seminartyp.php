@@ -39,7 +39,7 @@ class seminartyp
 		{
 			$this->typ_id = $typ_id ;
 			$sql = \rex_sql::factory() ;
-			$sql->setDebug = rex::getProperty('debug') ;
+			$sql->setDebug = \rex::getProperty('debug') ;
 			$querySeminartyp = 'SELECT lang_id, bezeichnung FROM ' . \rex::getTablePrefix()  . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
 			$sql->setQuery($querySeminartyp) ;
 			for($i=0; $i<$sql->getRows(); $i++)
@@ -75,7 +75,7 @@ class seminartyp
   public function getMaxTypID()
   {
 		$sql = \rex_sql::factory() ;
-		$sql->setDebug = rex::getProperty('debug') ;
+		$sql->setDebug = \rex::getProperty('debug') ;
 		$queryMaxID = 'SELECT MAX(typ_id) AS max_id FROM ' . \rex::getTablePrefix()  . 'skh3_seminartyp_lok' ;
 		$sql->setQuery($queryMaxID) ;
 		$sql->getRow() ;
@@ -120,7 +120,7 @@ class seminartyp
 	{
 		//DB-Objekt
 		$sql = \rex_sql::factory() ;
-		$sql->setDebug = rex::getProperty('debug') ;
+		$sql->setDebug = \rex::getProperty('debug') ;
 		if(empty($this->typ_id))
 		{
 			echo('Neuer Eintrag') ;
@@ -185,7 +185,7 @@ class seminartyp
 	public function seminartypDelete()
 	{
 		$sql = \rex_sql::factory() ;
-		$sql->setDebug = rex::getProperty('debug') ;
+		$sql->setDebug = \rex::getProperty('debug') ;
 		$queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
 		if($sql->setQuery($queryDelete))
 				echo('Seminartyp gelöscht') ;
