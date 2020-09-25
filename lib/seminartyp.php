@@ -151,48 +151,6 @@ class seminartyp
         }
       }
     }
-			/*
-			for($i = 0; $i < count($this->lang_id); $i++)
-			{
-				echo "For-Schleife Durchlauf $i<br />" ;
-				if(!empty($this->bezeichnung[$i]))
-				{
-					//Escapezeichen und whitespaces behandeln
-					$this->bezeichnung[$i] = htmlspecialchars(trim($this->bezeichnung[$i]),ENT_QUOTES,'UTF-8') ;
-					$querySemTyp = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok (typ_id, lang_id, bezeichnung) VALUES (' . $this->typ_id . ',' . $this->lang_id[$i] . ',\'' . $this->bezeichnung[$i] . '\');' ;
-					//in DB speichern
-					if($sql->setQuery($querySemTyp))
-						echo('Seminartyp für Sprache ' . $this->lang_id[$i] . ' erfolgreich gespeichert') ;
-					else
-					{
-						echo('Fehler beim Speichern des Seminartyps<br />' . $sql->getError()) ;
-						return false ;
-					}
-				}
-			}
-		}
-		else
-		{
-			echo('Eintrag ändern') ;
-			for($i = 0; $i < count($this->lang_id); $i++)
-			{
-				if(!empty($this->bezeichnung[$i]))
-				{
-					//Escapezeichen und whitespaces behandeln
-					$this->bezeichnung[$i] = htmlspecialchars(trim($this->bezeichnung[$i]),ENT_QUOTES,'UTF-8') ;
-					$querySemTyp = 'UPDATE ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok SET bezeichnung=\'' . $this->bezeichnung[$i].'\' WHERE typ_id=' . $this->typ_id.' AND lang_id=' . $this->lang_id[$i] . ';' ;
-					//in DB speichern
-					if($sql->setQuery($querySemTyp))
-						echo('Seminartyp für Sprache ' . $this->lang_id[$i] . ' erfolgreich gespeichert') ;
-					else
-					{
-						echo('Fehler beim Speichern des Seminartyps<br />' . $sql->getError()) ;
-						return false;
-					}
-				}
-			}
-		}
-		*/ 
 		return true;
 	}
 

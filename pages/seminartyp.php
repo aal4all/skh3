@@ -1,6 +1,5 @@
 <?php
   error_reporting('E_ALL');
-  echo("seminartypen") ;
   $lang_id = rex_request('lang_id', 'int');
   $func = rex_request('func', 'string');
 
@@ -42,6 +41,7 @@
     }
     /*
     //Formular anzeigen
+    * rex_form geht hier doof oder ich bin zu doof
     $form = rex_form::factory(rex::getTable('skh3_seminartyp_lok'), '', 'typ_id='.rex_request('typ_id', 'int', 0));
     $form->setLanguageSupport('typ_id','lang_id');
     //Start - add bezeichnung-field
