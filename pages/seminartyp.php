@@ -63,47 +63,39 @@
 
 		echo $content;
 		*/
-?>
-<div class="rex-addon-output">
-<?php $headline = $func == 'edit' ? 'seminartyp ändern' : 'Neuer Seminartyp'; ?>
-	<h2 class="rex-hl2"><?php //echo $headline; echo (' (ID ' . $seminartyp->getTypID() . ' )'); ?></h2>
-<?php
-  if(isset($_POST['submit']))
-  {
-    //hier Array für Typen
-    foreach($_POST['bezeichnung'] as $key => $value)
+    echo('<div class="rex-addon-output">') ;
+    $headline = $func == 'edit' ? 'seminartyp ändern' : 'Neuer Seminartyp' ; 
+    echo('<h2 class="rex-hl2">' . $headline . ' (ID ' . $seminartyp->getTypID() . ' )</h2>') ;
+    if(isset($_POST['submit']))
     {
-      $seminartyp->setClang($key, $key);
-      $seminartyp->setBezeichnung($key, $value);
+      //hier Array für Typen
+      foreach($_POST['bezeichnung'] as $key => $value)
+      {
+        $seminartyp->setClang($key, $key);
+        $seminartyp->setBezeichnung($key, $value);
+      }
+      if($seminartyp->seminartypSave())
+        echo('Speichern erfolgreich');
+      else
+        echo('ein Fehler ist aufgetreten');
     }
-    if($seminartyp->seminartypSave())
-      echo('Speichern erfolgreich');
     else
-      echo('ein Fehler ist aufgetreten');
+    {
+      echo('<div class="skh3-form">') ;
+      echo ('<form action="" method="post">') ;
+      //Sprachen aus DB holen
+      $sql = rex_sql::factory();
+      $queryClang = 'SELECT id, name FROM ' . rex::getTablePrefix() . 'clang;' ;
+      $sql->setQuery($queryClang) ;
+      for($i = 0; $i < $sql->getRows(); $i++)
+      {
+        echo '<h3>' . $sql->getValue('name') .'</h3>';
+        echo '<label for="bezeichnung">Bezeichnung</label><input class="txt" type="text" name="bezeichnung[]" id="bezeichung" value="'.$seminartyp->getBezeichnung($i).'" /><br />';
+        $sql->next();
+      }
+      echo('<input type="submit" class="btn" name="submit" value="Speichern" />') ;
+      echo('</form></div></div>') ;
     }
-    else
-    { 
-?>
-	<div class="skh3-form">
-		<form action="" method="post">
-<?php
-  //Sprachen aus DB holen
-  $sql = rex_sql::factory();
-  $queryClang = 'SELECT id, name FROM ' . rex::getTablePrefix() . 'clang;' ;
-  $sql->setQuery($queryClang);
-  for($i = 0; $i < $sql->getRows(); $i++)
-  {
-    echo '<h3>' . $sql->getValue('name') .'</h3>';
-    echo '<label for="bezeichnung">Bezeichnung</label><input class="txt" type="text" name="bezeichnung[]" id="bezeichung" value="'.$seminartyp->getBezeichnung($i).'" /><br />';
-    $sql->next();
-   }
-?>
-			<input type="submit" class="btn" name="submit" value="Speichern" />
-		</form>
-	</div>
-</div>
-<?php
-  }
   }
   //Seminartyp löschen
   if($func == 'del')

@@ -20,7 +20,6 @@
 		->ensureColumn(new rex_sql_column('lang_id', 'int(11)', $nullable = false))
 		->ensureColumn(new rex_sql_column('bezeichnung', 'varchar(255)', $nullable = false))
 		->setPrimaryKey(['typ_id', 'lang_id'])
-		->ensureIndex(new rex_sql_index('bezeichnung', ['bezeichnung'], $type = rex_sql_index::UNIQUE))
 		->ensure();
   	
 		

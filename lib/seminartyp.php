@@ -80,9 +80,10 @@ class seminartyp
 		$sql->setQuery($queryMaxID) ;
 		$sql->getRow() ;
 		if($sql->getValue('max_id') == null)
-		  return(1) ;
+		  $this->typ_id = 1 ;
 		else
-		  return($sql->getValue('max_id')+1) ;
+		  $this->typ_id = $sql->getValue('max_id')+1 ;
+		return true ;
 	}
 
   //Getter
@@ -124,14 +125,15 @@ class seminartyp
 		if(empty($this->typ_id))
 		{
 			echo('Neuer Eintrag') ;
+			if($this->typ_id = $this->getMaxTypID())
 			//höchste Typ-ID aus DB holen 
-			$queryMaxID = 'SELECT MAX(typ_id) AS max_id FROM ' . \rex::getTablePrefix()  . 'skh3_seminartyp_lok ;' ;
-			if($sql->setQuery($queryMaxID))
-			{
-				$sql->getRow() ;
-				$this->typ_id = $sql->getValue('max_id') + 1 ; //typ_id erhöhen
+			//$queryMaxID = 'SELECT MAX(typ_id) AS max_id FROM ' . \rex::getTablePrefix()  . 'skh3_seminartyp_lok ;' ;
+			//if($sql->setQuery($queryMaxID))
+			//{
+			//	$sql->getRow() ;
+			//	$this->typ_id = $sql->getValue('max_id') + 1 ; //typ_id erhöhen
 				echo 'Typ_ID = '. $this->typ_id ;
-			}
+			//}
 			else
 			{
 				echo('Fehler beim ermitteln der typ_id<br />' . $sql->getError()) ;
