@@ -71,6 +71,7 @@
       //hier Array für Typen
       foreach($_POST['bezeichnung'] as $key => $value)
       {
+				echo('key: '.$key.' value: '.$value);
         $seminartyp->setClang($key, $key);
         $seminartyp->setBezeichnung($key, $value);
       }
