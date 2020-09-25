@@ -43,10 +43,10 @@
     }
     
     //Formular anzeigen
-    $form = rex_form::factory(rex::getTable('skh3_seminartyp_lok'), '', 'typ_id='.$typ_id);
+    $form = rex_form::factory(rex::getTable('skh3_seminartyp_lok'), '', 'typ_id='.rex_request('typ_id', 'int', 0));
     $form->setLanguageSupport('typ_id','lang_id');
     //Start - add bezeichnung-field
-		$field = $form->addTextAreaField('description');
+		$field = $form->addTextAreaField('Bezeichnung');
 		//$field->setLabel($this->i18n('snippets_label_description'));
 		$field->setLabel('bezeichnung');
 		//End - add bezeichnung-field
@@ -56,7 +56,13 @@
 		}
 
 		$content = $form->get();
-		
+		$fragment = new rex_fragment();
+		$fragment->setVar('class', 'edit', false);
+		$fragment->setVar('title', $formLabel, false);
+		$fragment->setVar('body', $content, false);
+		$content = $fragment->parse('core/page/section.php');
+
+		echo $content;
 		
 ?>
 <div class="rex-addon-output">
