@@ -132,6 +132,26 @@ class seminartyp
 				echo('Fehler beim ermitteln der typ_id<br />' . $sql->getError()) ;
 				return false ;
 			}
+		// ab hier neu mit replace
+    }
+    else
+      echo ('Eintrag ändern') ;
+    for($i = 0; $i < count($this->lang_id); $i++)
+    {
+      if(!empty($this->bezeichnung[$i]))
+      {
+        $this->bezeichnung[$i] = htmlspecialchars(trim($this->bezeichnung[$i]),ENT_QUOTES,'UTF-8') ;
+        $querySemTyp = 'REPLACE INTO ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok (typ_id, lang_id, bezeichnung) VALUES (' . $this->typ_id . ',' . $this->lang_id[$i] . ',\'' . $this->bezeichnung[$i] . '\');' ;
+        if($sql->setQuery($querySemTyp))
+          echo('Seminartyp für Sprache ' . $this->lang_id[$i] . ' erfolgreich gespeichert') ;
+        else
+        {
+          echo('Fehler beim Speichern des Seminartyps<br />' . $sql->getError()) ;
+          return false ;
+        }
+      }
+    }
+			/*
 			for($i = 0; $i < count($this->lang_id); $i++)
 			{
 				echo "For-Schleife Durchlauf $i<br />" ;
@@ -153,7 +173,7 @@ class seminartyp
 		}
 		else
 		{
-			echo('Eintrag ändern'.count($this->lang_id)) ;
+			echo('Eintrag ändern') ;
 			for($i = 0; $i < count($this->lang_id); $i++)
 			{
 				if(!empty($this->bezeichnung[$i]))
@@ -172,6 +192,7 @@ class seminartyp
 				}
 			}
 		}
+		*/ 
 		return true;
 	}
 
