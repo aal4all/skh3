@@ -27,7 +27,9 @@
   }
   //geldgeber hinzufügen oder ändern
   if ($func == 'add' || $func == 'edit') 
+  
   {
+		$geldgeber_id = rex_request('geldgeber_id', 'int');
     if($func == 'add') //wenn keine geldgeber ausgewählt wurde
       $geldgeber = new skh3\geldgeber(null) ;
     //ID für add und 
@@ -89,6 +91,7 @@
   //geldgeber löschen
   if($func == 'del')
   {
+		$geldgeber_id = rex_request('geldgeber_id', 'int');
     $geldgeber = new skh3\geldgeber($geldgeber_id);
     $geldgeber->geldgeberDelete();
   }
