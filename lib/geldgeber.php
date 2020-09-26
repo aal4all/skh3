@@ -40,7 +40,7 @@ class geldgeber
       $sql = \rex_sql::factory() ;
       $sql->setDebug = \rex::getProperty('debug') ;
       //Infos holen, sind in allen Sprachen gleich
-      $querygeldgeber = 'SELECT name, webseite FROM ' . \rex::getTablePrefix() . 'skh3_geldgeber WHERE geldgeber_id=' . $this->geldgeber_id ;
+      $querygeldgeber = 'SELECT name, website FROM ' . \rex::getTablePrefix() . 'skh3_geldgeber WHERE geldgeber_id=' . $this->geldgeber_id ;
       $sql->setQuery($querygeldgeber) ;
       if($sql->getRow())
       {

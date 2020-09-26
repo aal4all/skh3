@@ -5,7 +5,7 @@
 
   if ($func == '') 
   {
-    $query='SELECT geldgeber_id, name, webseite FROM ' .rex::getTablePrefix() . 'skh3_geldgeber' ;
+    $query='SELECT geldgeber_id, name, website FROM ' .rex::getTablePrefix() . 'skh3_geldgeber' ;
     $list = rex_list::factory($query) ;
     //Spalte zum Hinzufügen und Editieren
     $thIcon = '<a href="' . $list->getUrl(['func' => 'add']) . '" title="'.$this->i18n('column_hashtag') . ' ' . rex_i18n::msg('add') . '"><i class="rex-icon rex-icon-add-action"></i></a>' ;
@@ -20,7 +20,7 @@
     $list->removeColumn('geldgeber_id') ;
     $list->addTableColumnGroup(array(5, '*', '*', 5)) ;
     $list->setColumnLabel('name', 'Geldgeber') ;
-    $list->setColumnLabel('webseite', 'Webseite') ;
+    $list->setColumnLabel('website', 'Webseite') ;
     //felder sortierbar machen
     $list->setColumnSortable('name') ;
     $list->show() ;
@@ -69,7 +69,7 @@
     if(isset($_POST['submit'])) 
     {
       $geldgeber->setName($_POST['name']) ;
-      $geldgeber->setWebseite($_POST['webseite']) ;
+      $geldgeber->setWebseite($_POST['website']) ;
       if($geldgeber->geldgeberSave())
         echo('Speichern erfolgreich') ;
       else
@@ -80,7 +80,7 @@
       echo('<div class="skh3-form">') ;
       echo('<form action="" method="post">') ;
       echo('<label for="name">Name</label><input type="text" class="txt" name="name" id="name" value="' . $geldgeber->getName() .'" /><br />') ;
-      echo('<label for="webseite">Webseite</label><input type="text" class="txt" name="webseite" id="webseite" value="'. $geldgeber->getWebseite() . '" /><br />') ;
+      echo('<label for="website">Webseite</label><input type="text" class="txt" name="website" id="website" value="'. $geldgeber->getWebseite() . '" /><br />') ;
       echo('<input type="submit" class="btn" name="submit" value="Speichern" />') ;
       echo('</form></div></div>') ;
     }
