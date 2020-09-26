@@ -9,7 +9,7 @@
     $list = rex_list::factory($query) ;
     //Spalte zum Hinzufügen und Editieren
     $thIcon = '<a href="' . $list->getUrl(['func' => 'add']) . '" title="'.$this->i18n('column_hashtag') . ' ' . rex_i18n::msg('add') . '"><i class="rex-icon rex-icon-add-action"></i></a>' ;
-    $tdIcon = '<img src="media/user.gif" alt="edit" title="edit" />' ;
+    $tdIcon = '<i class="rex-icon fa-file-text-o"></i>';
 		$list->addColumn($thIcon, $tdIcon, 0, ['<th class="rex-table-icon">###VALUE###</th>', '<td class="rex-table-icon">###VALUE###</td>']) ;
     $list->setColumnParams($thIcon, array('func' => 'edit','geldgeber_id' => '###geldgeber_id###')) ;
     //spalte zum löschen
@@ -20,7 +20,7 @@
     $list->removeColumn('geldgeber_id') ;
     $list->addTableColumnGroup(array(5, '*', '*', 5)) ;
     $list->setColumnLabel('name', 'Geldgeber') ;
-    $list->setColumnLabel('website', 'Webseite') ;
+    $list->setColumnLabel('website', 'Website') ;
     //felder sortierbar machen
     $list->setColumnSortable('name') ;
     $list->show() ;
@@ -44,7 +44,7 @@
 		//Start - add website-field
 		$field = $form->addTextField('website');
 		//$field->setLabel($this->i18n('snippets_label_description'));
-		$field->setLabel('Webseite');
+		$field->setLabel('Website');
 		//End - add website-field
 
 		if ($func == 'edit') {
