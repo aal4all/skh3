@@ -8,7 +8,7 @@
  * 
  */
  
-namespace skh3;
+namespace skh3 ;
 class seminartyp
 
 {
@@ -40,7 +40,7 @@ class seminartyp
 			$this->typ_id = $typ_id ;
 			$sql = \rex_sql::factory() ;
 			$sql->setDebug = \rex::getProperty('debug') ;
-			$querySeminartyp = 'SELECT lang_id, bezeichnung FROM ' . \rex::getTablePrefix()  . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
+			$querySeminartyp = 'SELECT lang_id, bezeichnung FROM ' . \rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE typ_id=' . $this->typ_id . ';' ;
 			$sql->setQuery($querySeminartyp) ;
 			for($i=0; $i<$sql->getRows(); $i++)
 			{
