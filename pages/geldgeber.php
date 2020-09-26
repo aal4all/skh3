@@ -60,7 +60,7 @@
 
 		echo $content ;
 		
-		
+		/*
     echo('<div class="rex-addon-output">') ;
     $headline = $func == 'edit' ? 'Geldgeber bearbeiten' : 'neuer Geldgeber' ; 
     echo('<h2 class="rex-hl2">') ; 
@@ -84,11 +84,12 @@
       echo('<input type="submit" class="btn" name="submit" value="Speichern" />') ;
       echo('</form></div></div>') ;
     }
+    */
   }
   //geldgeber löschen
   if($func == 'del')
   {
-    $geldgeber = new geldgeber($geldgeber_id);
+    $geldgeber = new skh3\geldgeber($geldgeber_id);
     $geldgeber->geldgeberDelete();
   }
 ?>
