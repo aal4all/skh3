@@ -14,7 +14,7 @@
     $list->setColumnParams($thIcon, array('func' => 'edit','geldgeber_id' => '###geldgeber_id###')) ;
     //spalte zum löschen
     $tdDelete = 'löschen' ;
-    $list->addColumn('Löschen', $tdDelete, 4, array( '<th>###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' )) ;
+    $list->addColumn('Löschen', $tdDelete, 4, array( '<th>###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams('Löschen',array('func' => 'del','geldgeber_id' => '###geldgeber_id###')) ;
     //id entfernen
     $list->removeColumn('geldgeber_id') ;
