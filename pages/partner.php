@@ -32,9 +32,10 @@
     //  $partner = new partner(null) ;
     //ID für add und 
     //if($func == 'edit')
-    //  $partner = new partner($partner_id);
+    //  $partner = new partner($partner_id) ;
+    
     //Formular anzeigen
-    $form = rex_form::factory(rex::getTable('skh3_partner'), '', 'partner_id=' . rex_request('partner_id', 'int', 0), 'post', rex::getProperty('debug'));
+    $form = rex_form::factory(rex::getTable('skh3_partner'), '', 'partner_id=' . rex_request('partner_id', 'int', 0), 'post', rex::getProperty('debug')) ;
     //Start - add name-field
 		$field = $form->addTextField('name');
 		//$field->setLabel($this->i18n('snippets_label_description'));
