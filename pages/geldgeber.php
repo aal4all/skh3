@@ -5,7 +5,7 @@
 
   if ($func == '') 
   {
-    $query='SELECT geldgeber_id, name, website FROM ' .rex::getTablePrefix() . 'skh3_geldgeber' ;
+    $query='SELECT geldgeber_id, name, website FROM ' . rex::getTablePrefix() . 'skh3_geldgeber' ;
     $list = rex_list::factory($query) ;
     //Spalte zum Hinzufügen und Editieren
     $thIcon = '<a href="' . $list->getUrl(['func' => 'add']) . '" title="'.$this->i18n('column_hashtag') . ' ' . rex_i18n::msg('add') . '"><i class="rex-icon rex-icon-add-action"></i></a>' ;
@@ -27,7 +27,6 @@
   }
   //geldgeber hinzufügen oder ändern
   if ($func == 'add' || $func == 'edit') 
-  
   {
 		$geldgeber_id = rex_request('geldgeber_id', 'int');
     //if($func == 'add') //wenn keine geldgeber ausgewählt wurde
@@ -36,7 +35,6 @@
     //if($func == 'edit')
     //  $geldgeber = new skh3\geldgeber($geldgeber_id);
     //Formular anzeigen
-    // rex_form geht hier doof oder ich bin zu doof
     $form = rex_form::factory(rex::getTable('skh3_geldgeber'), '', 'geldgeber_id=' . rex_request('geldgeber_id', 'int', 0), 'post', rex::getProperty('debug'));
     //Start - add name-field
 		$field = $form->addTextField('name');
