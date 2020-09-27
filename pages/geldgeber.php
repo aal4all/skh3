@@ -42,11 +42,14 @@
 		$field = $form->addTextField('name');
 		//$field->setLabel($this->i18n('snippets_label_description'));
 		$field->setLabel('Name');
+		$field->getValidator()->add( 'notEmpty', 'Das Feld Name darf nicht leer sein.');
 		//End - add name-field
 		//Start - add website-field
 		$field = $form->addTextField('website');
 		//$field->setLabel($this->i18n('snippets_label_description'));
 		$field->setLabel('Website');
+		$field->getValidator()->add( 'notEmpty', 'Das Feld Website darf nicht leer sein.');
+		$field->getValidator()->add( 'url', 'Bitte eine url eingeben');
 		//End - add website-field
 
 		if ($func == 'edit') {
