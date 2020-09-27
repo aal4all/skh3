@@ -37,7 +37,7 @@
     //  $geldgeber = new skh3\geldgeber($geldgeber_id);
     //Formular anzeigen
     // rex_form geht hier doof oder ich bin zu doof
-    $form = rex_form::factory(rex::getTable('skh3_geldgeber'), '', 'geldgeber_id='.rex_request('geldgeber_id', 'int', 0));
+    $form = rex_form::factory(rex::getTable('skh3_geldgeber'), '', 'geldgeber_id=' . rex_request('geldgeber_id', 'int', 0));
     //Start - add name-field
 		$field = $form->addTextField('name');
 		//$field->setLabel($this->i18n('snippets_label_description'));
@@ -50,7 +50,7 @@
 		//End - add website-field
 
 		if ($func == 'edit') {
-			$form->addParam('geldgeber_id', $typ_id) ;
+			$form->addParam('geldgeber_id', $geldgeber_id) ;
 		}
 
 		$content = $form->get() ;
