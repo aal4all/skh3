@@ -1,5 +1,6 @@
 <?php
 	error_reporting('E_ALL') ;
+	$func = rex_request('func', 'string') ;
 	echo("Hier kommt das Partnergeraffel") ;
 
   if ($func == '') 
