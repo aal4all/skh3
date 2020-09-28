@@ -23,8 +23,8 @@
     }
 
     //Hinzufügen und Ändern
-    $thAEIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>' ;
-    $tdAEIcon = '<img src="media/document.gif" alt="edit" title="edit" />' ;
+    $thAEIcon = '<a href="' . $list->getUrl(['func' => 'add']) . '" title="' . $this->i18n('column_hashtag') . ' ' . rex_i18n::msg('add') . '"><i class="rex-icon rex-icon-add-action"></i></a>' ;
+    $tdAEIcon = '<i class="rex-icon fa-file-text-o"></i>' ;
     $tdDelete = '<span class="del">del</span>' ;
     $tdCopy = 'copy' ;
     //Spalten hinzufügen
