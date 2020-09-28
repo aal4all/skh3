@@ -355,7 +355,6 @@ class seminar
       $report .= '<br /><font color="red">Fehler beim ermitteln der Seminar_ID:</font>'.$sql->getError();
       $result = false;
     }
-    $sql->freeResult();
     
     //Daten speichern
     if(empty($this->seminar_id))
