@@ -55,6 +55,7 @@
 		->ensure();
 	
 	// create skh3_personen_lok if not exists
+	/*
 	rex_sql_table::get(rex::getTable('skh3_personen_lok'))
 		->ensureColumn(new rex_sql_column('person_id', 'mediumint(8) unsigned', $nullable = false))
 		->ensureColumn(new rex_sql_column('lang_id', 'int(11)', $nullable = false))
@@ -62,6 +63,7 @@
 		->setPrimaryKey(['person_id', 'lang_id'])
 		->ensureForeignKey(new rex_sql_foreign_key('fk_personenlok_personen', rex::getTable('skh3_personen'), ['person_id' => 'person_id'], $onUpdate = rex_sql_foreign_key::CASCADE))
 		->ensure();
+	*/
 	
 	// create skh3_leitung if not exists
 	rex_sql_table::get(rex::getTable('skh3_leitung'))
