@@ -12,7 +12,7 @@
     $list->addColumn($thIcon, $tdIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams($thIcon, array('func' => 'edit','person_id' => '###person_id###')) ;
     //Spalte für Beschreibungsicon
-    $tdBesch = '<img src="media/document.gif" alt="description" title="description" />' ;
+    $tdBesch = '<i class="rex-icon fa-file-text-o"></i>' ;
     $list->addColumn('Beschr', $tdBesch, 4, array( '<th>###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams('Beschr',array('func' => 'desc','person_id' => '###person_id###')) ;
     //spalte zum löschen
