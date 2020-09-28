@@ -29,11 +29,11 @@
   if ($func == 'add' || $func == 'edit') 
   {
     $person_id = rex_request('person_id', 'int') ;
-    if($func == 'add') //wenn keine Person ausgewählt wurde
-      $person = new skh3\personen(null, $lang_id) ;
+    //if($func == 'add') //wenn keine Person ausgewählt wurde
+    //  $person = new skh3\personen(null, $lang_id) ;
     //ID für add und 
-    if($func == 'edit')
-      $person = new skh3\personen($person_id, $lang_id) ;
+    //if($func == 'edit')
+    //  $person = new skh3\personen($person_id, $lang_id) ;
     //Formular anzeigen
     $form = rex_form::factory(rex::getTable('skh3_personen'), '', 'person_id=' . rex_request('person_id', 'int', 0), 'post', rex::getProperty('debug')) ;
     //Start - add firstname-field
