@@ -136,7 +136,7 @@ class personen
       echo('Eintrag ändern') ;
       $queryName = 'UPDATE ' . \rex::getTablePrefix() . 'skh3_personen SET vorname=\'' . $this->vorname . '\', name=\'' . $this->name . '\' WHERE person_id=' . $this->person_id ;
     }
-    $sql = rex_sql::factory() ;
+    $sql = \rex_sql::factory() ;
     $sql->setDebug = \rex::getProperty('debug') ;
     if($sql->setQuery($queryName))
       echo('Person erfolgreich gespeichert') ;
@@ -151,7 +151,7 @@ class personen
   //person löschen
   public function personDelete()
   {
-    $sql = rex_sql::factory() ;
+    $sql = \rex_sql::factory() ;
     $sql->setDebug = \rex::getProperty('debug') ;
     $queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_personen WHERE person_id=' . $this->person_id ;
     if($sql->setQuery($queryDelete))
@@ -204,7 +204,7 @@ class personen
   //beschreibung löschen
   public function beschreibungDelete()
   {
-    $sql = rex_sql::factory() ;
+    $sql = \rex_sql::factory() ;
     $sql->setDebug = \rex::getProperty('debug') ;
     $queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id=' . $this->person_id .' AND lang_id=' . $this->lang_id ;
     if($sql->setQuery($queryDelete))
