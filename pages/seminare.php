@@ -231,7 +231,7 @@
         $sql->next();
       }
       echo('<input type="submit" class="btn" name="submit" value="Speichern" />') ;
-      echo'</form></div>' );
+      echo('</form></div>' );
       echo('<script type="text/javascript">jQuery(document).ready(function(){jQuery(".datepicker").datepicker({clickInput:true, inline:true, dateFormat: "yy-mm-dd", autoSize: true });});</script></div>') ;
     }
   }
