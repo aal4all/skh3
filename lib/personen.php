@@ -45,7 +45,7 @@ class personen
         $this->vorname = htmlspecialchars_decode($sql->getValue('vorname'),ENT_QUOTES) ;
         $this->name = htmlspecialchars_decode($sql->getValue('name'),ENT_QUOTES) ;
       }
-      //holt beschreibung in jeweiliger Sprache
+    }
     else
     {
       $this->vorname = '' ;
