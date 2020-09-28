@@ -264,7 +264,6 @@ class seminar
       }
       else
         echo('<font color="red">Fehler beim Holen der Anzahl Sprachen</font><br />' . $sql->getError()) ;
-      $sql->freeResult() ;
     }
   }
 
