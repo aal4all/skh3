@@ -8,11 +8,11 @@
   //Seminare auflisten (aktuelle und zukünftige)
   if ($func == '') 
   {
-    $query='SELECT '.$REX['TABLE_PREFIX'].'skh3_seminare.seminar_id, titel, seminar_start, seminar_ende, seminar_ort, seminar_online 
-      FROM '.$REX['TABLE_PREFIX'].'skh3_seminare 
-      INNER JOIN '.$REX['TABLE_PREFIX'].'skh3_seminare_lok 
-      ON '.$REX['TABLE_PREFIX'].'skh3_seminare.seminar_id = '.$REX['TABLE_PREFIX'].'skh3_seminare_lok.seminar_id 
-      WHERE '.$REX['TABLE_PREFIX'].'skh3_seminare_lok.clang='.$REX['CUR_CLANG'].' AND seminar_start >= date(now())' ;
+    $query='SELECT ' .  rex::getTablePrefix() . 'skh3_seminare.seminar_id, titel, seminar_start, seminar_ende, seminar_ort, seminar_online 
+      FROM ' .  rex::getTablePrefix() . 'skh3_seminare 
+      INNER JOIN ' .  rex::getTablePrefix() . 'skh3_seminare_lok 
+      ON ' .  rex::getTablePrefix() . 'skh3_seminare.seminar_id = ' .  rex::getTablePrefix() .'skh3_seminare_lok.seminar_id 
+      WHERE ' .  rex::getTablePrefix() . 'skh3_seminare_lok.clang=' . $REX['CUR_CLANG'] . ' AND seminar_start >= date(now())' ;
       //ORDER BY seminar_start'; //WHERE-Bedingung Seminarstart: seminar_start >= date(now()) AND
     $orderBy = rex_request("sort", "string", "") ;
     $list = rex_list::factory($query) ;
@@ -40,7 +40,7 @@
     $list->setColumnLabel('titel', 'Seminar') ; 
     $list->setColumnLabel('seminar_start', 'Beginn') ;
     $list->setColumnLabel('seminar_ende', 'Ende') ;
-    $list->setColumnLabel('seminar_ort', 'Ort') 
+    $list->setColumnLabel('seminar_ort', 'Ort') ;
     $list->setColumnLabel('seminar_online', 'Status') ;
     //felder sortierbar machen
     $list->setColumnSortable('titel') ;
@@ -122,7 +122,7 @@
       echo('<label for="seminar_ort">Ort:</label><input type="text" class="txt" name="seminar_ort" id="seminar_ort" value="' . $seminar->getSeminarOrt() . '" /><br />' ;
       echo('<label for="seminar_typ">Seminartyp:</label><select name="seminar_typ" id="seminar_typ">') ;
       echo('<option value="">Seminartyp wählen</option>') ;
-      $querySemTyp = 'SELECT typ_id, bezeichnung FROM ' . $REX['TABLE_PREFIX'] . 'skh3_seminartyp_lok WHERE lang_id=0' ;
+      $querySemTyp = 'SELECT typ_id, bezeichnung FROM ' .  rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE lang_id=0' ;
       $sql->setQuery($querySemTyp) ;
       for($i = 0; $i < $sql->getRows(); $i++)
       {
@@ -136,7 +136,7 @@
       echo('</select> <br />') ;
       echo('<h3>Personal und Partner</h3>') ;
       echo('<label for="refis">ReferentInnen:</label><select name="refis[]" id="refis" multiple="multiple" size="8">') ;
-      $queryRefis = 'SELECT person_id,vorname,name FROM ' . $REX['TABLE_PREFIX'] . 'skh3_personen ORDER BY name,vorname;' ;
+      $queryRefis = 'SELECT person_id,vorname,name FROM ' .  rex::getTablePrefix() . 'skh3_personen ORDER BY name,vorname;' ;
       $sql->setQuery($queryRefis) ;
       for($i = 0; $i < $sql->getRows(); $i++)
       {
@@ -149,7 +149,7 @@
       }
       echo('</select> <br />') ;
       echo('<label for="leitung">Leitung:</label><select name="leitung[]" id="leitung" multiple="multiple" size="8">') ;
-      $queryLeitung = 'SELECT person_id,vorname,name FROM ' . $REX['TABLE_PREFIX'] . 'skh3_personen ORDER BY name,vorname;' ;
+      $queryLeitung = 'SELECT person_id,vorname,name FROM ' .  rex::getTablePrefix() . 'skh3_personen ORDER BY name,vorname;' ;
       $sql->setQuery($queryLeitung) ;
       for($i = 0; $i < $sql->getRows(); $i++)
       {
@@ -162,7 +162,7 @@
       }
       echo('</select> <br />') ;
       echo('<label for="verantwortung">Verantwortung:</label><select name="verantwortung[]" id="verantwortung" multiple="multiple" size="8">') ;
-      $queryVerantw = 'SELECT person_id,vorname,name FROM ' . $REX['TABLE_PREFIX'] . 'skh3_personen ORDER BY name,vorname;' ;
+      $queryVerantw = 'SELECT person_id,vorname,name FROM ' .  rex::getTablePrefix() . 'skh3_personen ORDER BY name,vorname;' ;
       $sql->setQuery($queryVerantw) ;
       for($i = 0; $i < $sql->getRows(); $i++)
       {
@@ -175,7 +175,7 @@
       }
       echo('</select> <br />') ;
       echo('<label for="partner">Partner:</label><select name="partner[]" id="partner" multiple="multiple" size="3">') ;
-      $queryPartner = 'SELECT partner_id,name FROM ' . $REX['TABLE_PREFIX'] . 'skh3_partner ORDER BY name;' ;
+      $queryPartner = 'SELECT partner_id,name FROM ' .  rex::getTablePrefix() . 'skh3_partner ORDER BY name;' ;
       $sql->setQuery($queryPartner) ;
       for($i = 0; $i < $sql->getRows(); $i++)
       {
@@ -188,7 +188,7 @@
       }
       echo('</select> <br />') ;
       echo('<label for="geldgeber">Cashcows:</label><select name="geldgeber[]" id="geldgeber" multiple="multiple" size="3">') ;
-      $queryGeldgeber = 'SELECT geldgeber_id,name FROM ' . $REX['TABLE_PREFIX'] . 'skh3_geldgeber ORDER BY name;' ;
+      $queryGeldgeber = 'SELECT geldgeber_id,name FROM ' .  rex::getTablePrefix() . 'skh3_geldgeber ORDER BY name;' ;
       $sql->setQuery($queryGeldgeber) ;
       for($i = 0; $i < $sql->getRows(); $i++)
       {
@@ -202,10 +202,10 @@
       echo('</select> <br />') ;
       echo('<h3>Lokalisierungen</h3>') ;
       //Währungen in Array lesen
-      $queryWaehrung = 'SELECT waehrung_id,bezeichnung,kurzform FROM ' . $REX['TABLE_PREFIX'] . 'skh3_waehrung ORDER BY waehrung_id;' ;
+      $queryWaehrung = 'SELECT waehrung_id,bezeichnung,kurzform FROM ' .  rex::getTablePrefix() . 'skh3_waehrung ORDER BY waehrung_id;' ;
       $waehrungen = $sql->getArray($queryWaehrung) ;
       //Sprachen aus DB holen                                 
-      $queryClang = 'SELECT id, name FROM ' . $REX['TABLE_PREFIX'] . 'clang;' ;
+      $queryClang = 'SELECT id, name FROM ' .  rex::getTablePrefix() . 'clang;' ;
       $sql->setQuery($queryClang);
       for($i = 0; $i < $sql->getRows(); $i++)
       {
