@@ -106,7 +106,7 @@
 	// create skh3_seminare_lok if not exists
 	rex_sql_table::get(rex::getTable('skh3_seminare_lok'))
 		->ensureColumn(new rex_sql_column('seminar_id', 'mediumint(8) unsigned', $nullable = false))
-		->ensureColumn(new rex_sql_column('lang_id', 'int(11)', $nullable = false))
+		->ensureColumn(new rex_sql_column('clang', 'int(11)', $nullable = false))
 		->ensureColumn(new rex_sql_column('titel', 'varchar(255)', $nullable = false))
 		->ensureColumn(new rex_sql_column('untertitel', 'varchar(255)', $nullable = false))
 		->ensureColumn(new rex_sql_column('beschreibung', 'text', $nullable = false))

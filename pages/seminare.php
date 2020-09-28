@@ -12,7 +12,7 @@
       FROM ' .  rex::getTablePrefix() . 'skh3_seminare 
       INNER JOIN ' .  rex::getTablePrefix() . 'skh3_seminare_lok 
       ON ' .  rex::getTablePrefix() . 'skh3_seminare.seminar_id = ' .  rex::getTablePrefix() .'skh3_seminare_lok.seminar_id 
-      WHERE ' .  rex::getTablePrefix() . 'skh3_seminare_lok.lang_id=' . rex_clang::getCurrentId() . ' AND seminar_start >= date(now())' ;
+      WHERE ' .  rex::getTablePrefix() . 'skh3_seminare_lok.clang=' . rex_clang::getCurrentId() . ' AND seminar_start >= date(now())' ;
       //ORDER BY seminar_start'; //WHERE-Bedingung Seminarstart: seminar_start >= date(now()) AND
     $orderBy = rex_request("sort", "string", "") ;
     $list = rex_list::factory($query) ;
@@ -122,7 +122,7 @@
       echo('<label for="seminar_ort">Ort:</label><input type="text" class="txt" name="seminar_ort" id="seminar_ort" value="' . $seminar->getSeminarOrt() . '" /><br />') ;
       echo('<label for="seminar_typ">Seminartyp:</label><select name="seminar_typ" id="seminar_typ">') ;
       echo('<option value="">Seminartyp wählen</option>') ;
-      $querySemTyp = 'SELECT typ_id, bezeichnung FROM ' .  rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE lang_id=0' ;
+      $querySemTyp = 'SELECT typ_id, bezeichnung FROM ' .  rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE clang=0' ;
       $sql->setQuery($querySemTyp) ;
       for($i = 0; $i < $sql->getRows(); $i++)
       {
