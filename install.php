@@ -113,7 +113,7 @@
 		->ensureColumn(new rex_sql_column('kosten', 'int(10)', $nullable = false, $default = 0))
 		->ensureColumn(new rex_sql_column('waehrung_id', 'tinyint(3) unsigned', $nullable = false))
 		->ensureColumn(new rex_sql_column('zielgruppe', 'varchar(255)', $nullable = false, $default = ''))
-		->setPrimaryKey(['seminar_id', 'lang_id'])
+		->setPrimaryKey(['seminar_id', 'clang'])
 		->ensureForeignKey(new rex_sql_foreign_key('fk_seminarelok_seminare', rex::getTable('skh3_seminare'), ['seminar_id' => 'seminar_id'], $onUpdate = rex_sql_foreign_key::CASCADE, $onDelete = rex_sql_foreign_key::CASCADE ))
 		->ensureForeignKey(new rex_sql_foreign_key('fk_seminarlok_waehrung', rex::getTable('skh3_waehrung'), ['waehrung_id' => 'waehrung_id'], $onUpdate = rex_sql_foreign_key::CASCADE), $onDelete = rex_sql_foreign_key::CASCADE )
 		->ensure();
