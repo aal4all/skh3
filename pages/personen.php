@@ -49,7 +49,7 @@
 		$field->getValidator()->add( 'notEmpty', 'Das Feld Website darf nicht leer sein.');
 		//End - add lastname-field
 		if ($func == 'edit') {
-			$form->addParam('partner_id', $partner_id) ;
+			$form->addParam('person_id', $person_id) ;
 		}
 
 		$content = $form->get() ;
