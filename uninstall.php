@@ -6,8 +6,8 @@
 	rex_sql_table::get(rex::getTable('skh3_leitung'))->drop();
 	rex_sql_table::get(rex::getTable('skh3_refis'))->drop();
 	rex_sql_table::get(rex::getTable('skh3_verantwortung'))->drop();
-	rex_sql_table::get(rex::getTable('skh3_personen_lok'))->drop();
-	// rex_sql_table::get(rex::getTable('skh3_seminare_lok'))->drop();
+	//rex_sql_table::get(rex::getTable('skh3_personen_lok'))->drop();
+	rex_sql_table::get(rex::getTable('skh3_seminare_lok'))->drop();
 	rex_sql_table::get(rex::getTable('skh3_seminartyp_lok'))->drop();
 	rex_sql_table::get(rex::getTable('skh3_waehrung'))->drop();
 	rex_sql_table::get(rex::getTable('skh3_personen'))->drop();
