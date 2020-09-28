@@ -7,16 +7,16 @@
   {
     $query='SELECT person_id, vorname, name FROM ' . rex::getTablePrefix() . 'skh3_personen' ;
     $list = rex_list::factory($query) ;
-    $thIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/user_plus.gif" alt="add" title="add" /></a>' ;
-    $tdIcon = '<img src="media/user.gif" alt="edit" title="edit" />' ;
-    $tdBesch = '<img src="media/document.gif" alt="description" title="description" />' ;
-    $tdDelete = 'löschen' ;
+    $thIcon = '<a href="' . $list->getUrl(['func' => 'add']) . '" title="' . $this->i18n('column_hashtag') . ' ' . rex_i18n::msg('add') . '"><i class="rex-icon rex-icon-add-action"></i></a>' ;
+    $tdIcon = '<i class="rex-icon fa-file-text-o"></i>' ;
     $list->addColumn($thIcon, $tdIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams($thIcon, array('func' => 'edit','person_id' => '###person_id###')) ;
     //Spalte für Beschreibungsicon
+    $tdBesch = '<img src="media/document.gif" alt="description" title="description" />' ;
     $list->addColumn('Beschr', $tdBesch, 4, array( '<th>###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams('Beschr',array('func' => 'desc','person_id' => '###person_id###')) ;
     //spalte zum löschen
+    $tdDelete = 'löschen' ;
     $list->addColumn('Löschen', $tdDelete, 5, array( '<th>###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams('Löschen', array('func' => 'del','person_id' => '###person_id###')) ;
     //id entfernen
