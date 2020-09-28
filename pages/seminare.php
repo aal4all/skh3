@@ -122,7 +122,7 @@
       echo('<label for="seminar_ort">Ort:</label><input type="text" class="txt" name="seminar_ort" id="seminar_ort" value="' . $seminar->getSeminarOrt() . '" /><br />') ;
       echo('<label for="seminar_typ">Seminartyp:</label><select name="seminar_typ" id="seminar_typ">') ;
       echo('<option value="">Seminartyp wählen</option>') ;
-      $querySemTyp = 'SELECT typ_id, bezeichnung FROM ' .  rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE clang=0' ;
+      $querySemTyp = 'SELECT typ_id, bezeichnung FROM ' .  rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE lang_id=0' ;
       $sql->setQuery($querySemTyp) ;
       for($i = 0; $i < $sql->getRows(); $i++)
       {
