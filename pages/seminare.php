@@ -12,7 +12,7 @@
       FROM ' .  rex::getTablePrefix() . 'skh3_seminare 
       INNER JOIN ' .  rex::getTablePrefix() . 'skh3_seminare_lok 
       ON ' .  rex::getTablePrefix() . 'skh3_seminare.seminar_id = ' .  rex::getTablePrefix() .'skh3_seminare_lok.seminar_id 
-      WHERE ' .  rex::getTablePrefix() . 'skh3_seminare_lok.lang_id=' . $REX['CUR_CLANG'] . ' AND seminar_start >= date(now())' ;
+      WHERE ' .  rex::getTablePrefix() . 'skh3_seminare_lok.lang_id=' . rex_clang::getCurrentId() . ' AND seminar_start >= date(now())' ;
       //ORDER BY seminar_start'; //WHERE-Bedingung Seminarstart: seminar_start >= date(now()) AND
     $orderBy = rex_request("sort", "string", "") ;
     $list = rex_list::factory($query) ;
