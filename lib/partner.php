@@ -6,7 +6,7 @@
  * @link http://www.hochdrei.org
  * 
  */
-
+namespace skh3 ;
 class partner
 {
   /**
