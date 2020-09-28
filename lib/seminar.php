@@ -345,7 +345,7 @@ class seminar
     $result = true; //Variable für Ergebnis
     $report = '';
     $queryStammdaten = ''; //Query zum Speichern der Stammdaten
-    $sql = rex_sql::factory();
+    $sql = \rex_sql::factory();
     $sql->setDebug = true;
     $queryStartTransaction = 'START TRANSACTION;';//Transaktion starten
     if($sql->setQuery($queryStartTransaction))
