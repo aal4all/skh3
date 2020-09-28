@@ -342,324 +342,310 @@ class seminar
   public function seminarSave()
   {
     //DB-Objekt
-    $result = true; //Variable für Ergebnis
-    $report = '';
-    $queryStammdaten = ''; //Query zum Speichern der Stammdaten
-    $sql = \rex_sql::factory();
-    $sql->setDebug = true;
-    $queryStartTransaction = 'START TRANSACTION;';//Transaktion starten
+    $result = true ; //Variable für Ergebnis
+    $report = '' ;
+    $queryStammdaten = '' ; //Query zum Speichern der Stammdaten
+    $sql = \rex_sql::factory() ;
+    $sql->setDebug = \rex::getProperty('debug') ;
+    $queryStartTransaction = 'START TRANSACTION;' ;//Transaktion starten
     if($sql->setQuery($queryStartTransaction))
-      $report .= '<br />Transaktion starten';
+      $report .= '<br />Transaktion starten' ;
     else
     {
-      $report .= '<br /><font color="red">Fehler beim ermitteln der Seminar_ID:</font>'.$sql->getError();
-      $result = false;
+      $report .= '<br /><font color="red">Fehler beim ermitteln der Seminar_ID:</font>' . $sql->getError() ;
+      $result = false ;
     }
     
     //Daten speichern
     if(empty($this->seminar_id))
     {
-      echo('Neuer Eintrag');
+      echo('Neuer Eintrag') ;
       //höchste Typ-ID aus DB holen 
-      $queryMaxID = 'SELECT MAX(seminar_id) AS max_id FROM '.$REX['TABLE_PREFIX'].'skh3_seminare;';
+      $queryMaxID = 'SELECT MAX(seminar_id) AS max_id FROM ' . \rex::getTablePrefix() . 'skh3_seminare' ;
       if($sql->setQuery($queryMaxID))
       {
-        $sql->getRow();
-        $this->seminar_id = $sql->getValue('max_id') + 1; //seminar_id erhöhen
-        $report .= '<br />Seminar_ID = '. $this->seminar_id;
+        $sql->getRow() ;
+        $this->seminar_id = $sql->getValue('max_id') + 1 ; //seminar_id erhöhen
+        $report .= '<br />Seminar_ID = '. $this->seminar_id ;
       }
       else
       {
-        $report .= '<br /><font color="red">Fehler beim ermitteln der Seminar_ID:</font> '.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler beim ermitteln der Seminar_ID:</font> ' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult(); //Speicher freigeben
       //Query für Stammdaten
-      $queryStammdaten = 'INSERT INTO '.$REX['TABLE_PREFIX'].'skh3_seminare (seminar_id, seminar_start,seminar_ende,seminar_ort,seminar_typ) VALUES ('.$this->seminar_id.',\''.$this->seminar_start.'\',\''.$this->seminar_ende.'\',\''.$this->seminar_ort.'\','.$this->seminar_typ.');';
+      $queryStammdaten = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_seminare (seminar_id, seminar_start,seminar_ende,seminar_ort,seminar_typ) VALUES (' . $this->seminar_id . ',\'' . $this->seminar_start . '\',\'' . $this->seminar_ende . '\',\'' . $this->seminar_ort . '\',' . $this->seminar_typ . ')' ;
     }
     else
     {
       //UPDATE-Query für Stammdaten
-      $queryStammdaten = 'UPDATE '.$REX['TABLE_PREFIX'].'skh3_seminare SET seminar_start=\''.$this->seminar_start.'\',seminar_ende=\''.$this->seminar_ende.'\',seminar_ort=\''.$this->seminar_ort.'\',seminar_typ='.$this->seminar_typ.' WHERE seminar_id = '.$this->seminar_id.';';
+      $queryStammdaten = 'UPDATE ' . \rex::getTablePrefix() . 'skh3_seminare SET seminar_start=\'' . $this->seminar_start . '\',seminar_ende=\'' . $this->seminar_ende . '\',seminar_ort=\'' . $this->seminar_ort . '\',seminar_typ=' . $this->seminar_typ . ' WHERE seminar_id = ' . $this->seminar_id ;
       //bisherige Lokalisierungen löschen
-      $queryDelOldSemLok = 'DELETE FROM '.$REX['TABLE_PREFIX'].'skh3_seminare_lok WHERE seminar_id='.$this->seminar_id.';';
+      $queryDelOldSemLok = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_seminare_lok WHERE seminar_id=' . $this->seminar_id ;
       if($sql->setQuery($queryDelOldSemLok))
       {
-        $report .= '<br />bisherige Lokalisierungen entfernt';
+        $report .= '<br />bisherige Lokalisierungen entfernt' ;
       }
       else
       {
-        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Lokalisierungen fehlgeschlagen:</font> '.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Lokalisierungen fehlgeschlagen:</font> ' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult(); //Speicher freigeben
       
       //bisherige Refis löschen
-      $queryDelOldRefis = 'DELETE FROM '.$REX['TABLE_PREFIX'].'skh3_refis WHERE seminar_id='.$this->seminar_id.';';
+      $queryDelOldRefis = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_refis WHERE seminar_id=' . $this->seminar_id ;
       if($sql->setQuery($queryDelOldRefis))
       {
-        $report .= '<br />Bisherige ReferentInnen entfernt';
+        $report .= '<br />Bisherige ReferentInnen entfernt' ;
       }
       else
       {
-        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger ReferentInnen fehlgeschlagen: </font>'.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger ReferentInnen fehlgeschlagen: </font>' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult(); //Speicher freigeben
       
       //Leitung löschen
-      $queryDelOldLeitung = 'DELETE FROM '.$REX['TABLE_PREFIX'].'skh3_leitung WHERE seminar_id='.$this->seminar_id.';';
+      $queryDelOldLeitung = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_leitung WHERE seminar_id=' . $this->seminar_id ;
       if($sql->setQuery($queryDelOldLeitung))
       {
-        $report .= '<br />Bisherige Leitung entfernt';
+        $report .= '<br />Bisherige Leitung entfernt' ;
       }
       else
       {
-        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Leitung fehlgeschlagen:</font> '.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Leitung fehlgeschlagen:</font> ' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult(); //Speicher freigeben
-      
+            
       //Verantwortliche löschen
-      $queryDelOldVerantwortliche = 'DELETE FROM '.$REX['TABLE_PREFIX'].'skh3_verantwortung WHERE seminar_id='.$this->seminar_id.';';
+      $queryDelOldVerantwortliche = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_verantwortung WHERE seminar_id=' . $this->seminar_id ;
       if($sql->setQuery($queryDelOldVerantwortliche))
       {
-        $report .= '<br />Bisherige Verantwortliche entfernt';
+        $report .= '<br />Bisherige Verantwortliche entfernt' ;
       }
       else
       {
-        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Verantwortlicher fehlgeschlagen:</font> '.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Verantwortlicher fehlgeschlagen:</font> ' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult(); //Speicher freigeben
-      
+            
       //Partner löschen
-      $queryDelOldPartner = 'DELETE FROM '.$REX['TABLE_PREFIX'].'skh3_koop WHERE seminar_id='.$this->seminar_id.';';
+      $queryDelOldPartner = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_koop WHERE seminar_id=' . $this->seminar_id ;
       if($sql->setQuery($queryDelOldPartner))
       {
-        $report .= '<br />Bisherige Partner entfernt';
+        $report .= '<br />Bisherige Partner entfernt' ;
       }
       else
       {
-        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Partner fehlgeschlagen: </font>'.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Partner fehlgeschlagen: </font>' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult(); //Speicher freigeben
       
       //Geldgeber löschen
-      $queryDelOldGeldgeber = 'DELETE FROM '.$REX['TABLE_PREFIX'].'skh3_foerdern WHERE seminar_id='.$this->seminar_id.';';
+      $queryDelOldGeldgeber = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_foerdern WHERE seminar_id=' . $this->seminar_id ;
       if($sql->setQuery($queryDelOldGeldgeber))
       {
-        $report .= '<br />Bisherige Geldgeber entfernt';
+        $report .= '<br />Bisherige Geldgeber entfernt' ;
       }
       else
       {
-        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Geldgeber fehlgeschlagen: </font>'.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler: Entfernen bisheriger Geldgeber fehlgeschlagen: </font>' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult(); //Speicher freigeben
     }
       
     //Stammdaten speichern
     //escape-Zeichen, Whitespaces behandeln
-    $this->seminar_start = mysql_real_escape_string(trim($this->seminar_start));
-    $this->seminar_ende = mysql_real_escape_string(trim($this->seminar_ende));
-    $this->seminar_ort = htmlspecialchars(trim($this->seminar_ort),ENT_QUOTES,'UTF-8');
-//!!    //Funktionen für regexp: Datum, Email, Webseiten
+    $this->seminar_start = mysql_real_escape_string(trim($this->seminar_start)) ;
+    $this->seminar_ende = mysql_real_escape_string(trim($this->seminar_ende)) ;
+    $this->seminar_ort = htmlspecialchars(trim($this->seminar_ort),ENT_QUOTES,'UTF-8') ;
+    //!!    //Funktionen für regexp: Datum, Email, Webseiten
     //auf leere Pflichtfelder prüfen
     if(empty($this->seminar_start))
     {
-      $report .= '<br /><font color="red">Fehler: Datum für Seminarbeginn fehlt</font>';
-      $result = false;
+      $report .= '<br /><font color="red">Fehler: Datum für Seminarbeginn fehlt</font>' ;
+      $result = false ;
     }
     if(empty($this->seminar_ende))
     {
-      $report .= '<br /><font color="red">Fehler: Datum für Seminarende fehlt</font>';
-      $result = false;
+      $report .= '<br /><font color="red">Fehler: Datum für Seminarende fehlt</font>' ;
+      $result = false ;
     }
     if(empty($this->seminar_ort))
     {
-      $report .= '<br /><font color="red">Fehler: Ort fehlt</font>';
-      $result = false;
+      $report .= '<br /><font color="red">Fehler: Ort fehlt</font>' ;
+      $result = false ;
     }
     
     //prüfen, ob DAtumsangaben richtiges Format haben
     if(!validateDate($this->seminar_start))
     {
-      $report .= '<br /><font color="red">Fehler: Seminarbeginn muss Format YYYY-MM-DD haben</font>';
-      $result = false;
+      $report .= '<br /><font color="red">Fehler: Seminarbeginn muss Format YYYY-MM-DD haben</font>' ;
+      $result = false ;
     }
     if(!validateDate($this->seminar_ende))
     {
-      $report .= '<br /><font color="red">Fehler: Seminarende muss Format 20YY-MM-DD haben</font>';
-      $result = false;
+      $report .= '<br /><font color="red">Fehler: Seminarende muss Format 20YY-MM-DD haben</font>' ;
+      $result = false ;
     }
     //Prüfen, ob Seminarbeginn vor Ende liegt
     if(strcmp($this->seminar_start, $this->seminar_ende) > 0)
     {
-      $report .= '<br /><font color="red">Fehler: Seminarende darf nicht vor Beginn liegen</font>';
-      $result = false;
+      $report .= '<br /><font color="red">Fehler: Seminarende darf nicht vor Beginn liegen</font>' ;
+      $result = false ;
     }
     //in DB speichern
     if($sql->setQuery($queryStammdaten))
-      $report .= '<br />Stammdaten erfolgreich gespeichert';
+      $report .= '<br />Stammdaten erfolgreich gespeichert' ;
     else
     {
-      $report .= '<br /><font color="red">Fehler beim Speichern der Stammdaten: </font>'.$sql->getError();
-      $result = false;
+      $report .= '<br /><font color="red">Fehler beim Speichern der Stammdaten: </font>' . $sql->getError() ;
+      $result = false ;
     }
 
     //Lokalisiertes speichern
     //mindestens eine Sprache muss ausgefüllt werden
-    $lokCount = false;
+    $lokCount = false ;
     for($i = 0; $i < $this->langCount; $i++)
     {
       if(!empty($this->titel[$i]))//Wenn Titel nicht leer, alles speichern
       {
-        $lokCount = true;
-//!!!      Prüfen, ob Pflichtfelder Inhalt haben          
+        $lokCount = true ;
+        // !!! Prüfen, ob Pflichtfelder Inhalt haben 
         //Escapezeichen und whitespaces behandeln
-        $this->titel[$i] = htmlspecialchars(trim($this->titel[$i]),ENT_QUOTES,'UTF-8');
-        $this->untertitel[$i] = htmlspecialchars(trim($this->untertitel[$i]),ENT_QUOTES,'UTF-8');
-        $this->beschreibung[$i] = htmlspecialchars(trim($this->beschreibung[$i]),ENT_QUOTES,'UTF-8');
-        $this->zielgruppe[$i] = htmlspecialchars(trim($this->zielgruppe[$i]),ENT_QUOTES,'UTF-8');
+        $this->titel[$i] = htmlspecialchars(trim($this->titel[$i]),ENT_QUOTES,'UTF-8') ;
+        $this->untertitel[$i] = htmlspecialchars(trim($this->untertitel[$i]),ENT_QUOTES,'UTF-8') ;
+        $this->beschreibung[$i] = htmlspecialchars(trim($this->beschreibung[$i]),ENT_QUOTES,'UTF-8') ;
+        $this->zielgruppe[$i] = htmlspecialchars(trim($this->zielgruppe[$i]),ENT_QUOTES,'UTF-8') ;
         //TN-Beitrag auf Richtigkeit prüfen, muss float und >=0 sein
         if(!empty($this->kosten[$i]) && !preg_match("/^[0-9]{1,7}$/",$this->kosten[$i]))
         {
-          $report .= '<br /><font color="red">Fehler: Teilnahmebeitrag für Sprache '.$this->clang[$i].' muss ganze Zahl sein (z.B. 110)</font>';
-          $result = false;        
+          $report .= '<br /><font color="red">Fehler: Teilnahmebeitrag für Sprache ' . $this->clang[$i] . ' muss ganze Zahl sein (z.B. 110)</font>' ;
+          $result = false ;
         }
         else
-          $this->kosten[$i] = intval($this->kosten[$i]);
+          $this->kosten[$i] = intval($this->kosten[$i]) ;
         if(!empty($this->kosten[$i]) && $this->kosten[$i] < 0.0)
         {
-          $report .= '<br /><font color="red">Fehler: Teilnahmebeitrag für Sprache '.$this->clang[$i].' fehlt oder ist negativ</font>';
-          $result = false;
+          $report .= '<br /><font color="red">Fehler: Teilnahmebeitrag für Sprache ' . $this->clang[$i] . ' fehlt oder ist negativ</font>' ;
+          $result = false ;
         }
         //DB-Query        
-        $querySemLok = 'INSERT INTO '.$REX['TABLE_PREFIX'].'skh3_seminare_lok (seminar_id, clang, titel, untertitel, beschreibung, kosten, waehrung_id, zielgruppe) VALUES ('.$this->seminar_id.','.$this->clang[$i].',\''.$this->titel[$i].'\',\''.$this->untertitel[$i].'\',\''.$this->beschreibung[$i].'\','.$this->kosten[$i].','.$this->waehrung[$i].',\''.$this->zielgruppe[$i].'\');';
+        $querySemLok = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_seminare_lok (seminar_id, clang, titel, untertitel, beschreibung, kosten, waehrung_id, zielgruppe) VALUES (' . $this->seminar_id . ',' . $this->clang[$i] . ',\'' . $this->titel[$i] . '\',\'' . $this->untertitel[$i] . '\',\'' . $this->beschreibung[$i] . '\',' . $this->kosten[$i] . ',' . $this->waehrung[$i] . ',\'' . $this->zielgruppe[$i] . '\')' ;
         //in DB speichern
         if($sql->setQuery($querySemLok))
-          $report .= '<br />Lokalisierung für Sprache '.$this->clang[$i].' erfolgreich gespeichert';
+          $report .= '<br />Lokalisierung für Sprache ' . $this->clang[$i] . ' erfolgreich gespeichert' ;
         else
         {
-          $report .= '<br /><font color="red">Fehler beim Speichern der Lokalisierung:</font> '.$sql->getError();
-          $report .= '<br />'.$querySemLok;
-          $result = false;
+          $report .= '<br /><font color="red">Fehler beim Speichern der Lokalisierung:</font> ' . $sql->getError() ;
+          $report .= '<br />'.$querySemLok ;
+          $result = false ;
         }
-        $sql->freeResult();
       }
     }
     //Wenn keine Lokalisierung ausgefüllt wurde
     if(!$lokCount)
     {
-      $report .= '<br /><font color="red">Fehler: mindestens eine Lokalisierung muss ausgefüllt werden</font>';
-      $result = false;
+      $report .= '<br /><font color="red">Fehler: mindestens eine Lokalisierung muss ausgefüllt werden</font>' ;
+      $result = false ;
     }
 
     //Refis speichern
     for($i = 0; $i < count($this->refis); $i++)
     {
       //refi-query
-      $querySemRefis = 'INSERT INTO '.$REX['TABLE_PREFIX'].'skh3_refis (seminar_id, person_id) VALUES ('.$this->seminar_id.','.$this->refis[$i].');';
+      $querySemRefis = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_refis (seminar_id, person_id) VALUES (' . $this->seminar_id . ',' . $this->refis[$i] . ')' ;
       //in DB speichern
       if($sql->setQuery($querySemRefis))
-        $report .= '<br />ReferentInnen erfolgreich gespeichert';
+        $report .= '<br />ReferentInnen erfolgreich gespeichert' ;
       else
       {
-        $report .= '<br /><font color="red">Fehler beim Speichern der ReferentInnen: </font>'.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler beim Speichern der ReferentInnen: </font>' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult();
     }
       
     //Leitung speichern
     for($i = 0; $i < count($this->leitung); $i++)
     {
       //leitungs-query
-      $querySemLeitung = 'INSERT INTO '.$REX['TABLE_PREFIX'].'skh3_leitung (seminar_id, person_id) VALUES ('.$this->seminar_id.','.$this->leitung[$i].');';
+      $querySemLeitung = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_leitung (seminar_id, person_id) VALUES (' . $this->seminar_id . ',' . $this->leitung[$i] . ')' ;
       //in DB speichern
       if($sql->setQuery($querySemLeitung))
-        $report .= '<br />Leitungsteam erfolgreich gespeichert';
+        $report .= '<br />Leitungsteam erfolgreich gespeichert' ;
       else
       {
-        $report .= '<br /><font color="red">Fehler beim Speichern des Leitungsteams:</font> '.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler beim Speichern des Leitungsteams:</font> ' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult();
     }
       
     //Verantwortliche speichern
     for($i = 0; $i < count($this->verantwortung); $i++)
     {
       //verntwortungs-query
-      $querySemVerantwortung = 'INSERT INTO '.$REX['TABLE_PREFIX'].'skh3_verantwortung (seminar_id, person_id) VALUES ('.$this->seminar_id.','.$this->verantwortung[$i].');';
+      $querySemVerantwortung = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_verantwortung (seminar_id, person_id) VALUES (' . $this->seminar_id . ',' . $this->verantwortung[$i] . ')' ;
       //in DB speichern
       if($sql->setQuery($querySemVerantwortung))
-        $report .= '<br />Verantwortliche erfolgreich gespeichert';
+        $report .= '<br />Verantwortliche erfolgreich gespeichert' ;
       else
       {
-        $report .= '<br />Fehler beim Speichern der Verantwortlichen: '.$sql->getError();
-        $result = false;
+        $report .= '<br />Fehler beim Speichern der Verantwortlichen: ' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult();
     }
       
     //Partner speichern
     for($i = 0; $i < count($this->partner); $i++)
     {
       //partner-query
-      $querySemPartner = 'INSERT INTO '.$REX['TABLE_PREFIX'].'skh3_koop (seminar_id, partner_id) VALUES ('.$this->seminar_id.','.$this->partner[$i].');';
+      $querySemPartner = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_koop (seminar_id, partner_id) VALUES (' . $this->seminar_id . ',' . $this->partner[$i] . ')' ;
       //in DB speichern
       if($sql->setQuery($querySemPartner))
-        $report .= '<br />Partner erfolgreich gespeichert';
+        $report .= '<br />Partner erfolgreich gespeichert' ;
       else
       {
-        $report .= '<br /><font color="red">Fehler beim Speichern der Partner:</font> '.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler beim Speichern der Partner:</font> ' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult();
     }
     
     //Geldgeber speichern
     for($i = 0; $i < count($this->geldgeber); $i++)
     {
       //Cashcow-query
-      $querySemGeldgeber = 'INSERT INTO '.$REX['TABLE_PREFIX'].'skh3_foerdern (seminar_id, geldgeber_id) VALUES ('.$this->seminar_id.','.$this->geldgeber[$i].');';
+      $querySemGeldgeber = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_foerdern (seminar_id, geldgeber_id) VALUES (' . $this->seminar_id . ',' . $this->geldgeber[$i] . ')' ;
       //in DB speichern
       if($sql->setQuery($querySemGeldgeber))
-        $report .= '<br />Cashcows erfolgreich gespeichert';
+        $report .= '<br />Cashcows erfolgreich gespeichert' ;
       else
       {
-        $report .= '<br /><font color="red">Fehler beim Speichern der Cashcows:</font> '.$sql->getError();
-        $result = false;
+        $report .= '<br /><font color="red">Fehler beim Speichern der Cashcows:</font> ' . $sql->getError() ;
+        $result = false ;
       }
-      $sql->freeResult();
     }
     
     //Transaktion zum Abschluss bringen
     if($result)
     {
-      $queryEndTransaction = 'COMMIT;';//Transaktion erfolgreich
-      $report .= '<br />Transaktion erfolgreich';
+      $queryEndTransaction = 'COMMIT;' ;//Transaktion erfolgreich
+      $report .= '<br />Transaktion erfolgreich' ;
     }
     else
     {
-      $queryEndTransaction = 'ROLLBACK;';//Transaktion gescheitert
-      $report .= '<br /><font color="red">Transaktion gescheitert:<font color="red"> '.$sql->getError();
-      $report .= '<br /><br /><font color="red"><strong>Bitte nutzern Sie den Zurück-Button des Browsers</strong><font color="red"> <br /><br />';
+      $queryEndTransaction = 'ROLLBACK;' ;//Transaktion gescheitert
+      $report .= '<br /><font color="red">Transaktion gescheitert:<font color="red"> ' . $sql->getError() ;
+      $report .= '<br /><br /><font color="red"><strong>Bitte nutzern Sie den Zurück-Button des Browsers</strong><font color="red"> <br /><br />' ;
     }
     if($sql->setQuery($queryEndTransaction))
       $report .= '<br />auf PHP-Ebene alles gut';
     else
     {
-      $report .= '<br />PHP-Ebene knirsch bumm: '.$sql->getError();
-      $report .= '<br /><br /><font color="red"><strong>Admin oder Entwickler informieren, Kopie der Fehlermeldung nicht vergessen</strong><font color="red"> <br /><br />';
-      $result = false;
+      $report .= '<br />PHP-Ebene knirsch bumm: ' . $sql->getError() ;
+      $report .= '<br /><br /><font color="red"><strong>Admin oder Entwickler informieren, Kopie der Fehlermeldung nicht vergessen</strong><font color="red"> <br /><br />' ;
+      $result = false ;
     }
-    $sql->freeResult();
-    echo $report;
-    return $result;
+    echo $report ;
+    return $result ;
   }
 
   /**
@@ -671,25 +657,24 @@ class seminar
   */
   public function seminarChangeStatus()
   {
-    global $REX;
     //DB-Geraschel
-    $sql = rex_sql::factory();
-    $sql->setDebug = true;
+    $sql = \rex_sql::factory();
+    $sql->setDebug = \rex::getProperty('debug') ;
     //alten Status prüfen und ggf. ändern
     if($this->seminar_online == 'offline')
-      $this->seminar_online = 'online';
+      $this->seminar_online = 'online' ;
     else
-      $this->seminar_online = 'offline';
+      $this->seminar_online = 'offline' ;
     //DB-Update-Query
-    $queryStatus = 'UPDATE ' . $REX['TABLE_PREFIX'] . 'skh3_seminare SET seminar_online=\''.$this->seminar_online.'\' WHERE seminar_id=' . $this->seminar_id .';';
+    $queryStatus = 'UPDATE ' . \rex::getTablePrefix() . 'skh3_seminare SET seminar_online=\'' . $this->seminar_online . '\' WHERE seminar_id=' . $this->seminar_id ;
     if($sql->setQuery($queryStatus))
-        echo('Seminarstatus geändert');
+        echo('Seminarstatus geändert') ;
     else
     {
-      echo('Fehler: \n' . $sql->getError() . '\nQuery: ' . $queryStatus);
-      return false;
+      echo('Fehler: \n' . $sql->getError() . '\nQuery: ' . $queryStatus) ;
+      return false ;
     }
-    return true;
+    return true ;
   }
   
   /**
@@ -701,18 +686,17 @@ class seminar
   */
   public function seminarDelete()
   {
-    global $REX;
-    $sql = rex_sql::factory();
-    $sql->setDebug = true;
-    $queryDelete = 'DELETE FROM ' . $REX['TABLE_PREFIX'] . 'skh3_seminare WHERE seminar_id=' . $this->seminar_id .';';
+    $sql = \rex_sql::factory();
+    $sql->setDebug = \rex::getProperty('debug') ;
+    $queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_seminare WHERE seminar_id=' . $this->seminar_id ;
     if($sql->setQuery($queryDelete))
-        echo('Seminar gelöscht');
+        echo('Seminar gelöscht') ;
     else
     {
-      echo('Fehler: \n' . $sql->getError() . '\nQuery: ' . $queryDelete);
-      return false;
+      echo('Fehler: \n' . $sql->getError() . '\nQuery: ' . $queryDelete) ;
+      return false ;
     }
-    return true;
+    return true ;
   }
 }
 ?>
