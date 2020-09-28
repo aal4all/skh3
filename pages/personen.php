@@ -5,7 +5,7 @@
 
   if ($func == '') 
   {
-    $query='SELECT person_id, vorname, name FROM '.$REX['TABLE_PREFIX'].'skh3_personen' ;
+    $query='SELECT person_id, vorname, name FROM ' . rex::getTablePrefix() . 'skh3_personen' ;
     $list = rex_list::factory($query) ;
     $thIcon = '<a href="'. $list->getUrl(array('func' => 'add')) .'"><img src="media/user_plus.gif" alt="add" title="add" /></a>' ;
     $tdIcon = '<img src="media/user.gif" alt="edit" title="edit" />' ;
@@ -73,7 +73,7 @@
   if($func == 'desc')
   {
 		$person_id = rex_request('person_id', 'int') ;
-    $query='SELECT person_id, clang, beschreibung FROM '. $REX['TABLE_PREFIX'] . 'skh3_personen_lok WHERE person_id='.$person_id ;
+    $query='SELECT person_id, clang, beschreibung FROM '. \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id='.$person_id ;
     $list = rex_list::factory($query) ;
     $thIcon = '<a href="'. $list->getUrl(array('func' => 'descAdd','person_id' => $person_id)) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>' ;
     $tdIcon = '<img src="media/document.gif" alt="edit" title="edit" />' ;
@@ -114,7 +114,7 @@
         echo('<option value="">Sprache wählen</option>') ;
         //Sprachen aus DB holen
         $sql = rex_sql::factory() ;
-        $queryClang = 'SELECT id, name FROM ' . $REX['TABLE_PREFIX'] . 'clang;' ;
+        $queryClang = 'SELECT id, name FROM ' . \rex::getTablePrefix() . 'clang;' ;
         $sql->setQuery($queryClang) ;
         for($i = 0; $i < $sql->getRows(); $i++)
         {
