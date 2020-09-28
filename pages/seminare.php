@@ -118,8 +118,8 @@
       echo('<form action="" method="post">') ;
       echo('<h3>Stammdaten</h3>') ;
       echo('<label for="seminar_start">Beginn (jjjj-mm-tt):</label><input type="text" class="datepicker txt" name="seminar_start" id="seminar_start" value="' . $seminar->getSeminarStart() .'" /><br /><br />') ;
-      echo('<label for="seminar_ende">Ende (jjjj-mm-tt):</label><input type="text" class="datepicker txt" name="seminar_ende" id="seminar_ende" value="' . $seminar->getSeminarEnde() . '" /><br />') ;
-      echo('<label for="seminar_ort">Ort:</label><input type="text" class="txt" name="seminar_ort" id="seminar_ort" value="' . $seminar->getSeminarOrt() . '" /><br />') ;
+      echo('<label for="seminar_ende">Ende (jjjj-mm-tt):</label><input type="text" class="datepicker txt" name="seminar_ende" id="seminar_ende" value="' . $seminar->getSeminarEnde() . '" /><br /><br />') ;
+      echo('<label for="seminar_ort">Ort:</label><input type="text" class="txt" name="seminar_ort" id="seminar_ort" value="' . $seminar->getSeminarOrt() . '" /><br /><br />') ;
       echo('<label for="seminar_typ">Seminartyp:</label><select name="seminar_typ" id="seminar_typ">') ;
       echo('<option value="">Seminartyp wählen</option>') ;
       $querySemTyp = 'SELECT typ_id, bezeichnung FROM ' .  rex::getTablePrefix() . 'skh3_seminartyp_lok WHERE lang_id=0' ;
