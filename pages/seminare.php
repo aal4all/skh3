@@ -59,9 +59,9 @@
   { 
 		$seminar = rex_request('seminar_id', 'int') ;
 		if($func == 'add') //wenn kein Seminar ausgewählt wurde
-      $seminar = new seminar(null) ;
+      $seminar = new skh3\seminar(null) ;
     if($func == 'edit')
-      $seminar = new seminar($seminar_id) ;
+      $seminar = new skh3\seminar($seminar_id) ;
     //Formular anzeigen
     // altes Form
     echo('<div class="rex-addon-output">') ;
