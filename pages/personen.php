@@ -34,10 +34,10 @@
   {
     $person_id = rex_request('person_id', 'int') ;
     if($func == 'add') //wenn keine Person ausgewählt wurde
-      $person = new personen(null, $clang) ;
+      $person = new skh3\personen(null, $lang_id) ;
     //ID für add und 
     if($func == 'edit')
-      $person = new personen($person_id, $clang) ;
+      $person = new skh3\personen($person_id, $lang_id) ;
     //Formular anzeigen
     echo('<div class="rex-addon-output">') ;
     $headline = $func == 'edit' ? 'Person bearbeiten' : 'Neue Person' ;
@@ -66,33 +66,33 @@
   if($func == 'del')
   {
     $person_id = rex_request('person_id', 'int') ;
-    $person = new personen($person_id, $clang) ;
+    $person = new skh3\personen($person_id, $lang_id) ;
     $person->personDelete();
   }
   //beschreibungen
   if($func == 'desc')
   {
 		$person_id = rex_request('person_id', 'int') ;
-    $query='SELECT person_id, clang, beschreibung FROM '. \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id='.$person_id ;
+    $query='SELECT person_id, lang_id, beschreibung FROM '. \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id='.$person_id ;
     $list = rex_list::factory($query) ;
     $thIcon = '<a href="'. $list->getUrl(array('func' => 'descAdd','person_id' => $person_id)) .'"><img src="media/document_plus.gif" alt="add" title="add" /></a>' ;
     $tdIcon = '<img src="media/document.gif" alt="edit" title="edit" />' ;
     $tdDescDel = 'löschen' ;
     //Beschreibung bearbeiten
     $list->addColumn($thIcon, $tdIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td>###VALUE###</td>' )) ;
-    $list->setColumnParams($thIcon, array('func' => 'descEdit','person_id' => '###person_id###', 'clang' => '###clang###')) ;
+    $list->setColumnParams($thIcon, array('func' => 'descEdit','person_id' => '###person_id###', 'lang_id' => '###lang_id###')) ;
     //Beschreibung löschen
     $list->addColumn('Löschen', $tdDescDel, 4, array( '<th>###VALUE###</th>', '<td //class="rex-icon">###VALUE###</td>' )) ;
-    $list->setColumnParams('Löschen', array('func' => 'descDel','person_id' => '###person_id###', 'clang' => '###clang###')) ;
+    $list->setColumnParams('Löschen', array('func' => 'descDel','person_id' => '###person_id###', 'lang_id' => '###lang_id###')) ;
     //$list->removeColumn('person_id');
-    $list->setColumnLabel('clang', 'Sprache') ;
+    $list->setColumnLabel('lang_id', 'Sprache') ;
     $list->setColumnLabel('beschreibung', 'Beschreibung') ;
     $list->show() ;
   }
   //Beschreibungen bearbeiten
   if($func == 'descAdd' || $func == 'descEdit')
   {
-    $person = new personen($person_id, $clang) ;
+    $person = new personen($person_id, $lang_id) ;
     echo('<div class="rex-addon-output">') ;
     $headline = $func == 'descEdit' ? 'Personenbeschreibung bearbeiten' : 'Neue Personenbeschreibung' ;
     echo('<h2 class="rex-hl2">' . $headline . ' (ID ' . $person->getPersonID() . ')</h2>') ;
@@ -110,7 +110,7 @@
       echo('<form action="" method="post">') ;
       if($func == 'descAdd') //Wenn neuer Eintrag, Menu für Sprachen anzeigen
       {
-        echo('<label for="sprache">Sprache</label><select name="clang" id="sprache">') ;
+        echo('<label for="sprache">Sprache</label><select name="lang_id" id="sprache">') ;
         echo('<option value="">Sprache wählen</option>') ;
         //Sprachen aus DB holen
         $sql = rex_sql::factory() ;
@@ -131,7 +131,7 @@
   //Beschreibung löschen
   if($func == 'descDel')
   {
-    $person = new personen($person_id, $clang);
+    $person = new skh3\personen($person_id, $lang_id);
     $person->beschreibungDelete();
   }
 ?>

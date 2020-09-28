@@ -26,9 +26,9 @@ class personen
   private $name ;
 
   /**
-   * @private integer $clang Sprach_ID
+   * @private integer $lang_id Sprach_ID
    */
-  private $clang ;
+  private $lang_id ;
 
   /**
    * @private string $beschreibung Kurzbeschreibung einer Person
@@ -39,13 +39,13 @@ class personen
    * @access  public
    * @param   integer   $person_id
    */
-  function __construct($person_id = null, $clang = null)
+  function __construct($person_id = null, $lang_id = null)
   {
     if(!is_null($person_id))
     {
       //echo "PERSON ID\n";
       $this->person_id = $person_id ;
-      $this->clang = $clang ;
+      $this->lang_id = $lang_id ;
       $sql = \rex_sql::factory() ;
       $sql->setDebug = \rex::getProperty('debug') ;
       //Vornamen und Namen holen, sind in allen Sprachen gleich
@@ -57,7 +57,7 @@ class personen
         $this->name = htmlspecialchars_decode($sql->getValue('name'),ENT_QUOTES) ;
       }
       //holt beschreibung in jeweiliger Sprache
-      $queryBeschreibung = 'SELECT beschreibung FROM ' . \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id=' . $this->person_id . ' AND clang=' . $this->clang ;
+      $queryBeschreibung = 'SELECT beschreibung FROM ' . \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id=' . $this->person_id . ' AND lang_id=' . $this->lang_id ;
       unset($sql) ;
       $sql = \rex_sql::factory() ;
       $sql->setDebug = \rex::getProperty('debug') ;
@@ -69,7 +69,7 @@ class personen
     {
       $this->vorname = '' ;
       $this->name = '' ;
-      $this->clang = $clang ;
+      $this->lang_id = $lang_id ;
       $this->beschreibung = '' ;
     }
   }
@@ -89,7 +89,7 @@ class personen
   }
   public function getClang()
   {
-    return $this->clang ;
+    return $this->lang_id ;
   }
   public function getBeschreibung()
   {
@@ -106,9 +106,9 @@ class personen
     $this->name = $name ;
   }
   //lokalisierte Beschreibungen
-  public function setClang($clang)
+  public function setClang($lang_id)
   {
-    $this->clang = $clang ;
+    $this->lang_id = $lang_id ;
   }
   public function setBeschreibung($beschreibung)
   {
@@ -176,7 +176,7 @@ class personen
     // DAtenbank
     $sql = \rex_sql::factory() ;
     //prüfen, ob bereits ein Tabelleneintrag existiert -> insert oder update
-    $queryCount = 'SELECT COUNT(*) AS anzahl FROM ' . \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id = ' . $this->person_id . ' AND clang = ' . $this->clang ;
+    $queryCount = 'SELECT COUNT(*) AS anzahl FROM ' . \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id = ' . $this->person_id . ' AND langid = ' . $this->langid ;
     //Query absetzen
     $sql->setQuery($queryCount) ;
     //Ergernis prüfen
@@ -184,12 +184,12 @@ class personen
     {
       //Namen und Vornamen eintragen
       echo('Neuer Eintrag \n') ;
-      $queryBeschr = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_personen_lok (person_id, clang, beschreibung) VALUES (' . $this->person_id . ', ' . $this->clang . ', \'' . $this->beschreibung . '\')' ;
+      $queryBeschr = 'INSERT INTO ' . \rex::getTablePrefix() . 'skh3_personen_lok (person_id, lang_id, beschreibung) VALUES (' . $this->person_id . ', ' . $this->lang_id . ', \'' . $this->beschreibung . '\')' ;
     }
     else
     {
       echo('ändern \n') ;
-      $queryBeschr = 'UPDATE ' . \rex::getTablePrefix() . 'skh3_personen_lok SET beschreibung=\'' . $this->beschreibung . '\' WHERE person_id=' . $this->person_id . ' AND clang=' . $this->clang ;
+      $queryBeschr = 'UPDATE ' . \rex::getTablePrefix() . 'skh3_personen_lok SET beschreibung=\'' . $this->beschreibung . '\' WHERE person_id=' . $this->person_id . ' AND lang_id=' . $this->lang_id ;
     }
     if($sql->setQuery($queryBeschr))
       echo('<br />Beschreibung erfolgreich gespeichert') ;
@@ -206,7 +206,7 @@ class personen
   {
     $sql = rex_sql::factory() ;
     $sql->setDebug = \rex::getProperty('debug') ;
-    $queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id=' . $this->person_id .' AND clang=' . $this->clang ;
+    $queryDelete = 'DELETE FROM ' . \rex::getTablePrefix() . 'skh3_personen_lok WHERE person_id=' . $this->person_id .' AND lang_id=' . $this->lang_id ;
     if($sql->setQuery($queryDelete))
       echo('<br />Beschreibung gelöscht') ;
     else

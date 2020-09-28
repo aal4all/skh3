@@ -91,7 +91,7 @@
   if($func == 'del')
   {
 		$partner_id = rex_request('partner_id', 'int') ;
-    $partner = new partner($partner_id) ;
+    $partner = new skh3\partner($partner_id) ;
     $partner->partnerDelete() ;
   }
 ?>
