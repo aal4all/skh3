@@ -211,10 +211,10 @@
       {
         $lang = $sql->getValue('name') ;
         echo('<h3>' . $lang .'</h3>') ;
-        echo('<label for="titel">Titel ('.$lang.'):</label><input type="text" class="txt" name="titel[]" id="titel" value="'. $seminar->getTitel($i).'" /><br />') ;
-        echo('<label for="untertitel">Untertitel ('.$lang.'):</label><input type="text" class="txt" name="untertitel[]" id="untertitel" value="'. $seminar->getUntertitel($i).'" /><br />') ;
-        echo('<label for="beschreibung">Beschreibung ('.$lang.'):</label><textarea class="txt" name="beschreibung[]" id="beschreibung"  cols="50" rows="15">'.$seminar->getBeschreibung($i).'</textarea><br />') ;
-        echo('<label for="kosten">Teilnahmebeitrag ('.$lang.'):</label><input type="text" class="txt" name="kosten[]" id="kosten" value="'. $seminar->getKosten($i).'" /><br />') ;
+        echo('<label for="titel">Titel ('.$lang.'):</label><input type="text" class="txt" name="titel[]" id="titel" value="'. $seminar->getTitel($i).'" /><br /><br />') ;
+        echo('<label for="untertitel">Untertitel ('.$lang.'):</label><input type="text" class="txt" name="untertitel[]" id="untertitel" value="'. $seminar->getUntertitel($i).'" /><br /><br />') ;
+        echo('<label for="beschreibung">Beschreibung ('.$lang.'):</label><textarea class="txt" name="beschreibung[]" id="beschreibung"  cols="50" rows="15">'.$seminar->getBeschreibung($i).'</textarea><br /><br />') ;
+        echo('<label for="kosten">Teilnahmebeitrag ('.$lang.'):</label><input type="text" class="txt" name="kosten[]" id="kosten" value="'. $seminar->getKosten($i).'" /><br /><br />') ;
         //Währungen holen und in SELECT-Feld packen
         echo('<label for="waehrung">Waehrung:</label><select name="waehrung[]" id="waehrung" >') ;
         for($j = 0; $j < count($waehrungen); $j++)
@@ -225,9 +225,9 @@
             $selected = '';
           echo('<option value="' . $waehrungen[$j][waehrung_id] .'" '.$selected.'>'.$waehrungen[$j][bezeichnung].' ('.$waehrungen[$j][kurzform].')</option>') ;
         }
-        echo('</select> <br />') ;
+        echo('</select> <br /><br />') ;
         //Ende währungen
-        echo('<label for="zielgruppe">Zielgruppe ('.$lang.'):</label><input type="text" class="txt" name="zielgruppe[]" id="zielgruppe" value="'. $seminar->getZielgruppe($i).'" /><br />') ;
+        echo('<label for="zielgruppe">Zielgruppe ('.$lang.'):</label><input type="text" class="txt" name="zielgruppe[]" id="zielgruppe" value="'. $seminar->getZielgruppe($i).'" /><br /><br />') ;
         $sql->next();
       }
       echo('<input type="submit" class="btn" name="submit" value="Speichern" />') ;
