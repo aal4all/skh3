@@ -303,7 +303,7 @@
     ['waehrung_id' => 152 , 'bezeichnung' => 'Zentraler Afrikaner CfA BEAC', 'kurzform' => 'XAF']
   ] ;
   $sql = rex_sql::factory() ;
-  $sql->setTable(rex::getTable('skh3_waehrungen')) ;
+  $sql->setTable(rex::getTable('skh3_waehrung')) ;
   foreach ($waehrungdata as $row) {
     $sql->addRecord(static function (rex_sql $record) use ($row) {
       $record->setValues($row) ;
