@@ -25,13 +25,15 @@
     //Hinzufügen und Ändern
     $thAEIcon = '<a href="' . $list->getUrl(['func' => 'add']) . '" title="' . $this->i18n('column_hashtag') . ' ' . rex_i18n::msg('add') . '"><i class="rex-icon rex-icon-add-action"></i></a>' ;
     $tdAEIcon = '<i class="rex-icon fa-file-text-o"></i>' ;
-    $tdDelete = '<span class="del">del</span>' ;
-    $tdCopy = 'copy' ;
-    //Spalten hinzufügen
+    // »hinzufügen«
     $list->addColumn($thAEIcon, $tdAEIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams($thAEIcon, array('func' => 'edit','seminar_id' => '###seminar_id###')) ;
+    // »löschen«
+    $tdDelete = '<span class="del">del</span>' ;
     $list->addColumn('Del', $tdDelete, 6, array( '<th>###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams('Del', array('func' => 'del','seminar_id' => '###seminar_id###')) ;
+    // »copy«
+    $tdCopy = 'copy' ;
     $list->addColumn('Kopie', $tdCopy, 7, array( '<th>###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams('Kopie', array('func' => 'duplicate','seminar_id' => '###seminar_id###')) ;
     //id entfernen
