@@ -477,7 +477,7 @@ class seminar
     }
     
     //prüfen, ob DAtumsangaben richtiges Format haben
-    if(!validateDate($this->seminar_start))
+    if(!helpers::validateDate($this->seminar_start))
     {
       $report .= '<br /><font color="red">Fehler: Seminarbeginn muss Format YYYY-MM-DD haben</font>' ;
       $result = false ;
