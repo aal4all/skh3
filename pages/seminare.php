@@ -79,6 +79,10 @@
       $seminar->setAllVerantwortung($_POST['verantwortung']);
       $seminar->setAllPartner($_POST['partner']);
       $seminar->setAllGeldgeber($_POST['geldgeber']);
+      foreach($_POST['clang'] as $key => $value)
+      {
+        $seminar->setClang($key, $value);
+      }
       foreach($_POST['titel'] as $key => $value)
       {
         $seminar->setTitel($key, $value);
