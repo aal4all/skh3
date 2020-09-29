@@ -38,7 +38,7 @@
     $list->setColumnParams('Kopie', array('func' => 'duplicate','seminar_id' => '###seminar_id###')) ;
     //id entfernen
     $list->removeColumn('seminar_id') ;
-    $list->addTableColumnGroup(array(20, '*', 70, 70, 90, 40,40)) ;
+    $list->addTableColumnGroup(array(20, '*', 70, 70, 90, 40, 40, 40)) ;
     $list->setColumnLabel('titel', 'Seminar') ; 
     $list->setColumnLabel('seminar_start', 'Beginn') ;
     $list->setColumnLabel('seminar_ende', 'Ende') ;
