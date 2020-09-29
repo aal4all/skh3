@@ -29,7 +29,7 @@
     $list->addColumn($thAEIcon, $tdAEIcon, 0, array( '<th class="rex-icon">###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams($thAEIcon, array('func' => 'edit','seminar_id' => '###seminar_id###')) ;
     // »löschen«
-    $tdDelete = '<span class="del">del</span>' ;
+    $tdDelete = '<i class="rex-icon rex-icon-delete-action"></i>' ;
     $list->addColumn('Del', $tdDelete, 6, array( '<th>###VALUE###</th>', '<td class="rex-icon">###VALUE###</td>' )) ;
     $list->setColumnParams('Del', array('func' => 'del','seminar_id' => '###seminar_id###')) ;
     // »copy«
