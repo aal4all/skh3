@@ -129,7 +129,3 @@ function date_mask($datum, $lang)
   return($datum_neu);
 }
 ?>
-
-
-
-?> 
