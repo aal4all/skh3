@@ -186,7 +186,7 @@ class seminar
         echo('<font color="red">Fehler beim Holen der ReferentInnen</font><br />' . $sql->getError()) ;
       
       //Leitung
-      $querySemLeitung = 'SELECT person_id FROM ' . rex::getTablePrefix() . 'skh3_leitung WHERE seminar_id=' . $this->seminar_id ;
+      $querySemLeitung = 'SELECT person_id FROM ' . \rex::getTablePrefix() . 'skh3_leitung WHERE seminar_id=' . $this->seminar_id ;
       if($sql->setQuery($querySemLeitung))
       {
         for($i=0; $i<$sql->getRows(); $i++)
@@ -225,7 +225,7 @@ class seminar
         echo('<font color="red">Fehler beim Holen der Kooperationspartner</font><br />'.$sql->getError()) ;
       
       //Geldgeber
-      $querySemGeldgeber = 'SELECT geldgeber_id FROM ' . rex::getTablePrefix() . 'skh3_foerdern WHERE seminar_id='.$this->seminar_id ;
+      $querySemGeldgeber = 'SELECT geldgeber_id FROM ' . \rex::getTablePrefix() . 'skh3_foerdern WHERE seminar_id='.$this->seminar_id ;
       if($sql->setQuery($querySemGeldgeber))
       {
         for($i=0; $i<$sql->getRows(); $i++)
