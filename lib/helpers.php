@@ -1,4 +1,7 @@
 <?php
+
+  namespace skh3 ;
+  
   /*
    * validateDate
    * prüft, ob Datumsstring korrekt angegeben wurde
