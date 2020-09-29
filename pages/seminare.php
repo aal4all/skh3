@@ -115,7 +115,7 @@
       //fuer Datenbankabfragen
       $sql = rex_sql::factory();
       echo('<div class="skh3-form">') ;
-      echo('<form action="" method="post">') ;
+      echo('<form action="" method="post" name="seminarform">') ;
       echo('<h3>Stammdaten</h3>') ;
       echo('<label for="seminar_start">Beginn (jjjj-mm-tt):</label><input type="text" class="datepicker txt" name="seminar_start" id="seminar_start" value="' . $seminar->getSeminarStart() .'" /><br /><br />') ;
       echo('<label for="seminar_ende">Ende (jjjj-mm-tt):</label><input type="text" class="datepicker txt" name="seminar_ende" id="seminar_ende" value="' . $seminar->getSeminarEnde() . '" /><br /><br />') ;
@@ -183,7 +183,7 @@
           $selected = ' selected="selected"' ;
         else
           $selected = '' ;
-        echo('<option value="' . $sql->getValue('partner_id') .'" '.$selected.'>'.$sql->getValue('name').'</option>') ;
+        echo('<option value="' . $sql->getValue('partner_id') .'" ' . $selected . '>' . $sql->getValue('name') . '</option>') ;
         $sql->next();
       }
       echo('</select> <br />') ;
