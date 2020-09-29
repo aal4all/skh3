@@ -482,7 +482,7 @@ class seminar
       $report .= '<br /><font color="red">Fehler: Seminarbeginn muss Format YYYY-MM-DD haben</font>' ;
       $result = false ;
     }
-    if(!validateDate($this->seminar_ende))
+    if(!helpers::validateDate($this->seminar_ende))
     {
       $report .= '<br /><font color="red">Fehler: Seminarende muss Format 20YY-MM-DD haben</font>' ;
       $result = false ;
