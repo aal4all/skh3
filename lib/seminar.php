@@ -455,8 +455,8 @@ class seminar
       
     //Stammdaten speichern
     //escape-Zeichen, Whitespaces behandeln
-    $this->seminar_start = mysql_real_escape_string(trim($this->seminar_start)) ;
-    $this->seminar_ende = mysql_real_escape_string(trim($this->seminar_ende)) ;
+    $this->seminar_start = mysqli_real_escape_string(trim($this->seminar_start)) ;
+    $this->seminar_ende = mysqli_real_escape_string(trim($this->seminar_ende)) ;
     $this->seminar_ort = htmlspecialchars(trim($this->seminar_ort),ENT_QUOTES,'UTF-8') ;
     //!!    //Funktionen für regexp: Datum, Email, Webseiten
     //auf leere Pflichtfelder prüfen
