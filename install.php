@@ -301,14 +301,14 @@
     ['waehrung_id' => 150 , 'bezeichnung' => 'West-Samoanischer Tala', 'kurzform' => 'WST'],
     ['waehrung_id' => 151 , 'bezeichnung' => 'Yemeni Rial', 'kurzform' => 'YER'],
     ['waehrung_id' => 152 , 'bezeichnung' => 'Zentraler Afrikaner CfA BEAC', 'kurzform' => 'XAF']
-  ]
-  $sql = rex_sql::factory();
-  $sql->setTable(rex::getTable('skh3_waehrungen'));
+  ] ;
+  $sql = rex_sql::factory() ;
+  $sql->setTable(rex::getTable('skh3_waehrungen')) ;
   foreach ($waehrungdata as $row) {
     $sql->addRecord(static function (rex_sql $record) use ($row) {
-      $record->setValues($row);
-    });
+      $record->setValues($row) ;
+    }) ;
   }
-  $sql->insertOrUpdate();
+  $sql->insertOrUpdate() ;
 
 ?>
