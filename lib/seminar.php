@@ -455,8 +455,8 @@ class seminar
       
     //Stammdaten speichern
     //escape-Zeichen, Whitespaces behandeln
-    $this->seminar_start = mysqli_real_escape_string(trim($this->seminar_start)) ;
-    $this->seminar_ende = mysqli_real_escape_string(trim($this->seminar_ende)) ;
+    $this->seminar_start = trim($this->seminar_start) ;
+    $this->seminar_ende = trim($this->seminar_ende) ;
     $this->seminar_ort = htmlspecialchars(trim($this->seminar_ort),ENT_QUOTES,'UTF-8') ;
     //!!    //Funktionen für regexp: Datum, Email, Webseiten
     //auf leere Pflichtfelder prüfen
@@ -484,7 +484,7 @@ class seminar
     }
     if(!helpers::validateDate($this->seminar_ende))
     {
-      $report .= '<br /><font color="red">Fehler: Seminarende muss Format 20YY-MM-DD haben</font>' ;
+      $report .= '<br /><font color="red">Fehler: Seminarende muss Format YYYY-MM-DD haben</font>' ;
       $result = false ;
     }
     //Prüfen, ob Seminarbeginn vor Ende liegt
