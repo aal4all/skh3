@@ -253,7 +253,7 @@ class seminar
         for($i = 0; $i < $sql->getRows(); $i++)
         {
 					$lang_id = $sql->getValue('id') ;
-          $this->clang[$lang_id] =  ;
+          $this->clang[$lang_id] = $lang_id ;
           $this->titel[$lang_id] = '' ;
           $this->untertitel[$lang_id] = '' ;
           $this->beschreibung[$lang_id] = '' ;
