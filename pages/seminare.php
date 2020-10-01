@@ -247,22 +247,22 @@
   //Seminar löschen
   if($func == 'del')
   {
-    $seminar = new seminar($seminar_id) ;
+    $seminar = new skh3\seminar($seminar_id) ;
     $seminar->seminarDelete() ;
   }       
 
   //Status ändern
   if($func == 'status')
   {
-    $seminar = new seminar($seminar_id) ;
+    $seminar = new skh3\seminar($seminar_id) ;
     $seminar->seminarChangeStatus() ;
   }
         
   //Seminar kopieren
   if($func == 'duplicate')
   {
-    $origSeminar = new seminar($seminar_id) ; //originales Seminar
-    $dupSeminar = new seminar() ; //Kopie
+    $origSeminar = new skh3\seminar($seminar_id) ; //originales Seminar
+    $dupSeminar = new skh3\seminar() ; //Kopie
     //Stammdaten
     $dupSeminar->setSeminarStart('2028-01-01') ;
     $dupSeminar->setSeminarEnde('2028-01-01') ;
