@@ -115,7 +115,7 @@
 		->ensureColumn(new rex_sql_column('zielgruppe', 'varchar(255)', $nullable = false, $default = ''))
 		->setPrimaryKey(['seminar_id', 'clang'])
 		->ensureForeignKey(new rex_sql_foreign_key('fk_seminarelok_seminare', rex::getTable('skh3_seminare'), ['seminar_id' => 'seminar_id'], $onUpdate = rex_sql_foreign_key::CASCADE, $onDelete = rex_sql_foreign_key::CASCADE ))
-		->ensureForeignKey(new rex_sql_foreign_key('fk_seminarlok_waehrung', rex::getTable('skh3_waehrung'), ['waehrung_id' => 'waehrung_id'], $onUpdate = rex_sql_foreign_key::CASCADE), $onDelete = rex_sql_foreign_key::CASCADE )
+		->ensureForeignKey(new rex_sql_foreign_key('fk_seminarlok_waehrung', rex::getTable('skh3_waehrung'), ['waehrung_id' => 'waehrung_id'], $onUpdate = rex_sql_foreign_key::CASCADE, $onDelete = rex_sql_foreign_key::CASCADE ))
 		->ensure();
 	
 	// create skh3_foerdern if not exists
@@ -134,7 +134,7 @@
 		->ensureColumn(new rex_sql_column('partner_id', 'mediumint(8) unsigned', $nullable = false))
 		->setPrimaryKey(['seminar_id', 'partner_id'])
 		->ensureForeignKey(new rex_sql_foreign_key('fk_koop_partner', rex::getTable('skh3_partner'), ['partner_id' => 'partner_id'], $onUpdate = rex_sql_foreign_key::CASCADE))
-		->ensureForeignKey(new rex_sql_foreign_key('fk_koop_seminare', rex::getTable('skh3_seminare'), ['seminar_id' => 'seminar_id'], $onUpdate = rex_sql_foreign_key::CASCADE), $onDelete = rex_sql_foreign_key::CASCADE )
+		->ensureForeignKey(new rex_sql_foreign_key('fk_koop_seminare', rex::getTable('skh3_seminare'), ['seminar_id' => 'seminar_id'], $onUpdate = rex_sql_foreign_key::CASCADE, $onDelete = rex_sql_foreign_key::CASCADE ))
 		->ensure();
 	
 		
