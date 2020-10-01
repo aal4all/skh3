@@ -218,7 +218,7 @@
         $lang = $sql->getValue('name') ;
         $lang_id = $sql->getValue('id') ;
         echo('<h3>' . $lang .'</h3>') ;
-        echo('<input type="text" class="txt" name="clang[]" id="lang"  value="' . $lang_id . '"><br /><br />') ;
+        echo('<input type="hidden" name="clang[]" id="lang"  value="' . $lang_id . '"><br /><br />') ;
         echo('<label for="titel">Titel ('.$lang.'):</label><input type="text" class="txt" name="titel[]" id="titel" value="'. $seminar->getTitel($lang_id).'" /><br /><br />') ;
         echo('<label for="untertitel">Untertitel ('.$lang.'):</label><input type="text" class="txt" name="untertitel[]" id="untertitel" value="'. $seminar->getUntertitel($lang_id).'" /><br /><br />') ;
         echo('<label for="beschreibung">Beschreibung ('.$lang.'):</label><textarea class="txt" name="beschreibung[]" id="beschreibung"  cols="50" rows="15">'.$seminar->getBeschreibung($lang_id).'</textarea><br /><br />') ;
