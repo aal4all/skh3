@@ -9,7 +9,7 @@
     $query='SELECT ' . rex::getTablePrefix() . 'skh3_seminare.seminar_id, titel, seminar_start, seminar_ende, seminar_ort 
       FROM ' . rex::getTablePrefix() . 'skh3_seminare 
       INNER JOIN ' . rex::getTablePrefix() . 'skh3_seminare_lok 
-      ON ' . rex::getTablePrefix() . 'skh3_seminare.seminar_id = ' . $REX['TABLE_PREFIX'] . 'skh3_seminare_lok.seminar_id WHERE ' . rex::getTablePrefix() . 'skh3_seminare_lok.clang=' . rex_clang::getCurrentId() . ' AND seminar_start < date(now()) '; 
+      ON ' . rex::getTablePrefix() . 'skh3_seminare.seminar_id = ' . rex::getTablePrefix() . 'skh3_seminare_lok.seminar_id WHERE ' . rex::getTablePrefix() . 'skh3_seminare_lok.clang=' . rex_clang::getCurrentId() . ' AND seminar_start < date(now()) '; 
     //echo $query;
     $list = rex_list::factory($query);
     if ($orderBy == "") {
