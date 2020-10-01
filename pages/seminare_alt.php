@@ -38,7 +38,7 @@
   //Seminar löschen
   if($func == 'del')
   {
-    $seminar = new skh3/seminar($seminar_id);
+    $seminar = new skh3\seminar($seminar_id);
     $seminar->seminarDelete();
   }
         
