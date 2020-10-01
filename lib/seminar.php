@@ -252,13 +252,14 @@ class seminar
       {
         for($i = 0; $i < $sql->getRows(); $i++)
         {
-          $this->clang[$i] = $sql->getValue('id') ;
-          $this->titel[$i] = '' ;
-          $this->untertitel[$i] = '' ;
-          $this->beschreibung[$i] = '' ;
-          $this->kosten[$i] = 0 ;
-          $this->waehrung_id[$i] = 1 ;
-          $this->zielgruppe[$i] = '' ;
+					$lang_id = $sql->getValue('id') ;
+          $this->clang[$lang_id] =  ;
+          $this->titel[$lang_id] = '' ;
+          $this->untertitel[$lang_id] = '' ;
+          $this->beschreibung[$lang_id] = '' ;
+          $this->kosten[$lang_id] = 0 ;
+          $this->waehrung_id[$lang_id] = 1 ;
+          $this->zielgruppe[$lang_id] = '' ;
           $sql->next() ;
         }
       }
