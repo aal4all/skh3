@@ -1,5 +1,5 @@
 <?php
-  error_reporting('E_ALL');
+  error_reporting(E_ALL);
   echo("hier kommt das alte Seminargeraffel") ;
   $seminar_id = rex_request('seminar_id', 'int');
   $func = rex_request('func', 'string');

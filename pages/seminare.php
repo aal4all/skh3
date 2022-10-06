@@ -1,5 +1,5 @@
 <?php
-  error_reporting('E_ALL');
+  error_reporting(E_ALL);
   $func = rex_request('func', 'string') ;
   $seminar_id = rex_request('seminar_id', 'int') ;
   echo("hier kommt das Seminargeraffel") ;
@@ -227,11 +227,11 @@
         echo('<label for="waehrung">Waehrung:</label><select name="waehrung[]" id="waehrung" >') ;
         for($j = 0; $j < count($waehrungen); $j++)
         {
-          if($waehrungen[$j][waehrung_id] == $seminar->getWaehrung($lang_id))
+          if($waehrungen[$j]['waehrung_id'] == $seminar->getWaehrung($lang_id))
             $selected = ' selected="selected"';
           else
             $selected = '';
-          echo('<option value="' . $waehrungen[$j][waehrung_id] .'" '.$selected.'>'.$waehrungen[$j][bezeichnung].' ('.$waehrungen[$j][kurzform].')</option>') ;
+          echo('<option value="' . $waehrungen[$j]['waehrung_id'] .'" '.$selected.'>'.$waehrungen[$j]['bezeichnung'].' ('.$waehrungen[$j]['kurzform'].')</option>') ;
         }
         echo('</select> <br /><br />') ;
         //Ende währungen

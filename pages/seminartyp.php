@@ -1,5 +1,5 @@
 <?php
-  error_reporting('E_ALL');
+  error_reporting(E_ALL);
   $lang_id = rex_request('lang_id', 'int');
   $func = rex_request('func', 'string');
 

@@ -1,5 +1,5 @@
 <?php
-  error_reporting('E_ALL');
+  error_reporting(E_ALL);
 
   $addon = rex_addon::get('skh3');
 
@@ -30,7 +30,7 @@
 //  );
 
 //  rex_title("Seminare", $subpages);
-  echo rex_view::title(Seminare);
+  echo rex_view::title('Seminare');
   // Die Subpages werden nicht mehr über den "subpage"-Parameter gesteuert, sondern über "page" (getrennt mit einem Slash, z. B. page=demo_addon/config)
   // Die einzelnen Teile des page-Pfades können mit der folgenden Funktion ausgelesen werden.
   $subpage = rex_be_controller::getCurrentPagePart(2);
