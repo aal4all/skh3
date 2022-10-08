@@ -72,17 +72,21 @@ class seminartyp
 	* 
 	* type_id, lang_id ist primary key. typ_id is not autoinkrement. Must increase manually
 	*/
-  public function getMaxTypID()
+  public function getNewTypID()
   {
 		$sql = \rex_sql::factory() ;
 		$sql->setDebug = \rex::getProperty('debug') ;
 		$queryMaxID = 'SELECT MAX(typ_id) AS max_id FROM ' . \rex::getTablePrefix()  . 'skh3_seminartyp_lok' ;
 		$sql->setQuery($queryMaxID) ;
 		$sql->getRow() ;
-		if($sql->getValue('max_id') == null)
-		  $this->typ_id = 1 ;
-		else
-		  $this->typ_id = $sql->getValue('max_id')+1 ;
+    echo("#### MAX_ID: " . $sql->getValue('max_id')) ;
+		if($sql->getValue('max_id') == null) {
+		  $this->setTypId(1) ;
+    }
+		else {
+		  $this->setTypId($sql->getValue('max_id')+1) ;
+    }
+    echo("neue typ_id" . $this->getTypId()) ;
 		return true ;
 	}
 
@@ -125,8 +129,9 @@ class seminartyp
 		if(empty($this->typ_id))
 		{
 			echo('Neuer Eintrag') ;
-			if($this->typ_id = $this->getMaxTypID())
-				echo 'Typ_ID = '. $this->typ_id ;
+      echo("Alte Typ_ID: " . $this->getTypId() ) ;
+			if($this->getNewTypID())
+				echo ' Typ_ID = '. $this->getTypID() ;
 			else
 			{
 				echo('Fehler beim ermitteln der typ_id<br />' . $sql->getError()) ;
